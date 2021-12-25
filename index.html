@@ -28,41 +28,50 @@
 			margin: auto;
 		}
 		#card {
+			width: 400px;
+			height: 100px;
 			text-align: center;
 			padding: 20px;
-			display: none;
+			display: block;
 		}
 		#name {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			font-size: 32pt;
+			display: none;
 		}
 		#email {
 			font-family: 'Courier New', Courier, monospace;
 			font-size: 16pt;
 			padding: 10px 0;
+			display: none;
 		}
 		#links {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			font-size: 16pt;
+			display: none;
 		}
 	</style>
 	<script>
-		function showCard() {
+		function showInfo() {
 			console.log('hello');
-			document.getElementById('card').style.display = 'block';
+			document.getElementById('name').style.display = 'block';
+			// document.getElementById('email').style.display = 'block';
+			document.getElementById('links').style.display = 'block';
 		}
-		function hideCard() {
+		function hideInfo() {
 			console.log('goodbye');
-			document.getElementById('card').style.display = 'none';
+			document.getElementById('name').style.display = 'none';
+			// document.getElementById('email').style.display = 'none';
+			document.getElementById('links').style.display = 'none';
 		}
 	</script>
 </head>
 <body>
-	<div id='wrapper' onmouseover=showCard() onmouseout='hideCard()'>
+	<div id='wrapper' onmouseover='showInfo()' onmouseout='hideInfo()'>
 		<div id='p5-sketch'></div>
 		<div id='card'>
-			<div id='name'>Julian Quevedo</div>
-			<div id='email'>julianq at stanford dot edu</div>
+			<div id='name'>julian quevedo</div>
+			<!-- <div id='email'>julianq at stanford dot edu</div> -->
 			<div id='links'>
 				<a href='https://github.com/julian-q'>github</a>
 				<a href='./blog'>blog</a>
