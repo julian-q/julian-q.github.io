@@ -32,21 +32,13 @@
 		}
 		#info {
 			text-align: center;
-			visibility: hidden;
+			visibility: visible;
 			padding: 20px;
 		}
 	</style>
-	<script>
-		function showInfo() {
-			document.getElementById('info').style.visibility = 'visible';
-		}
-		function hideInfo() {
-			document.getElementById('info').style.visibility = 'hidden';
-		}
-	</script>
 </head>
 <body>
-	<div id='wrapper' onmouseover='showInfo()' onmouseout='hideInfo()'>
+	<div id='wrapper'>
 		<div id='p5-sketch' title='welcome to my website!'></div>
 		<div id='info'>
 			<p style='font-size: 32pt; line-height: 0px;'>
