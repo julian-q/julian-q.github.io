@@ -1,10 +1,74 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 	<title>julian</title>
-	<link rel="icon" href="img/icon.png">
-	<link rel="stylesheet" href="styles.css">
+	<link rel='icon' href='img/icon.png'>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+	<script src='p5-sketch/sketch.js'></script>
+	<script src='p5-sketch/classes/View.js'></script>
+	<script src='p5-sketch/classes/Cube.js'></script>
+	<style>
+		#wrapper {
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			max-width: 90%;
+			max-height: 80%;
+		}
+		#p5-sketch {
+			max-width: 400px;
+			max-height: 400px;
+			overflow: hidden;
+			outline-width: 5px;
+			outline-style: dashed;
+			box-shadow: 20px 20px;
+			margin: auto;
+		}
+		#card {
+			text-align: center;
+			padding: 20px;
+			display: none;
+		}
+		#name {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-size: 32pt;
+		}
+		#email {
+			font-family: 'Courier New', Courier, monospace;
+			font-size: 16pt;
+			padding: 10px 0;
+		}
+		#links {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-size: 16pt;
+		}
+	</style>
+	<script>
+		function showCard() {
+			console.log('hello');
+			document.getElementById('card').style.display = 'block';
+		}
+		function hideCard() {
+			console.log('goodbye');
+			document.getElementById('card').style.display = 'none';
+		}
+	</script>
 </head>
 <body>
-	hello world!
+	<div id='wrapper' onmouseover=showCard() onmouseout='hideCard()'>
+		<div id='p5-sketch'></div>
+		<div id='card'>
+			<div id='name'>Julian Quevedo</div>
+			<div id='email'>julianq at stanford dot edu</div>
+			<div id='links'>
+				<a href='https://github.com/julian-q'>github</a>
+				<a href='./blog'>blog</a>
+				<a href='./about'>about</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
