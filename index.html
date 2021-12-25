@@ -1,13 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang='en'>
 <head>
-	<title>julian</title>
+	<title>julian quevedo</title>
 	<link rel='icon' href='img/icon.png'>
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 	<script src='p5-sketch/sketch.js'></script>
 	<script src='p5-sketch/classes/View.js'></script>
 	<script src='p5-sketch/classes/Cube.js'></script>
 	<style>
+		* {
+			font-family: 'Tahoma';
+		}
 		#wrapper {
 			margin: 0;
 			position: absolute;
@@ -27,56 +30,32 @@
 			box-shadow: 20px 20px;
 			margin: auto;
 		}
-		#card {
-			width: 400px;
-			height: 100px;
+		#info {
 			text-align: center;
+			visibility: hidden;
 			padding: 20px;
-			display: block;
-		}
-		#name {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			font-size: 32pt;
-			display: none;
-		}
-		#email {
-			font-family: 'Courier New', Courier, monospace;
-			font-size: 16pt;
-			padding: 10px 0;
-			display: none;
-		}
-		#links {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			font-size: 16pt;
-			display: none;
 		}
 	</style>
 	<script>
 		function showInfo() {
-			console.log('hello');
-			document.getElementById('name').style.display = 'block';
-			// document.getElementById('email').style.display = 'block';
-			document.getElementById('links').style.display = 'block';
+			document.getElementById('info').style.visibility = 'visible';
 		}
 		function hideInfo() {
-			console.log('goodbye');
-			document.getElementById('name').style.display = 'none';
-			// document.getElementById('email').style.display = 'none';
-			document.getElementById('links').style.display = 'none';
+			document.getElementById('info').style.visibility = 'hidden';
 		}
 	</script>
 </head>
 <body>
 	<div id='wrapper' onmouseover='showInfo()' onmouseout='hideInfo()'>
 		<div id='p5-sketch'></div>
-		<div id='card'>
-			<div id='name'>julian quevedo</div>
-			<!-- <div id='email'>julianq at stanford dot edu</div> -->
-			<div id='links'>
+		<div id='info'>
+			<p style='font-size: 32pt; line-height: 0px;'>
+				julian quevedo
+			</p>
+			<p style='font-size: 16pt;'>
 				<a href='https://github.com/julian-q'>github</a>
-				<a href='./blog'>blog</a>
-				<a href='./about'>about</a>
-			</div>
+				<a href='./about.html'>about</a>
+			</p>
 		</div>
 	</div>
 </body>
