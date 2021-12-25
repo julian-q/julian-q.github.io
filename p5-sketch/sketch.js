@@ -4,8 +4,8 @@ let cubes;  // - array of cube objects                     see Cube.js
 function setup() {
   var canvas = createCanvas(600, 600, WEBGL);
   canvas.parent('p5-sketch')
-  pixelDensity(1.0);
-  frameRate(20);
+  pixelDensity(2.0);
+  frameRate(24);
   view = new View();
   cubes = [];
 
