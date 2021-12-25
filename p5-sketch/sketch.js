@@ -5,7 +5,7 @@ function setup() {
   var canvas = createCanvas(600, 600, WEBGL);
   canvas.parent('p5-sketch')
   pixelDensity(1.0);
-  frameRate(10);
+  frameRate(20);
   view = new View();
   cubes = [];
 
