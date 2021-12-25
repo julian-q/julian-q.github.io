@@ -1,3 +1,3 @@
 # julian-q.github.io
 
-website
+personal website
