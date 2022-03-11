@@ -1,59 +1,20 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
 	<title>julian</title>
-	<link rel='icon' href='img/icon.png'>
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-	<script src='p5-sketch/sketch.js'></script>
-	<script src='p5-sketch/classes/View.js'></script>
-	<script src='p5-sketch/classes/Cube.js'></script>
-	<style>
-		* {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		}
-		#wrapper {
-			margin: 0;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			-ms-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-			max-width: 90%;
-			max-height: 80%;
-		}
-		#p5-sketch {
-			max-width: 400px;
-			max-height: 400px;
-			overflow: hidden;
-			outline-width: 5px;
-			outline-style: dashed;
-			box-shadow: 20px 20px;
-			margin: auto;
-		}
-		#info {
-			text-align: center;
-			visibility: visible;
-			padding: 20px;
-		}
-	</style>
+	<link rel="icon" href="img/square.png">
+	<link rel="stylesheet" href="styles.css">
 </head>
+<script>
+	window.onload = function() {
+		let i = Math.floor(Math.random() * 9)
+		document.getElementById("random-photo").src = "img/nature/" + i + ".JPG"
+	}
+</script>
 <body>
-	<div id='wrapper'>
-		<div id='p5-sketch' title='welcome to my website!'></div>
-		<div id='info'>
-			<p style='font-size: 32pt; line-height: 0px;'>
-				julian
-			</p>
-			<!-- <p style='font-size: 16pt;'>
-				<a href='https://github.com/julian-q'>github</a>
-				<a href='./textbooks.html'>good reads</a>
-				<a href='./about.html'>about</a>
-			</p>
-			<p style='font-size: 16pt;'>
-				<a href='./resume.pdf'>resume</a>
-				<a href='https://calendly.com/julianq'>meet</a>
-			</p> -->
-		</div>
-	</div>
+	<center>
+	<img id="random-photo" class="outlined" src="" width="300px">
+	<h1>julian</h1>
+	</center>
 </body>
 </html>

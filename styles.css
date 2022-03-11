@@ -1,0 +1,23 @@
+* {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@media (min-width: 600px) {
+    body {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+@media (max-width: 600px) {
+    body {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+.outlined {
+    outline-width: 5px;
+    outline-style: dashed;
+    box-shadow: 20px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
