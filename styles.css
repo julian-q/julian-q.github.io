@@ -1,23 +1,27 @@
 * {
+    color: #DDDDDD;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-@media (min-width: 600px) {
-    body {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+body {
+    max-width: 600px;
+    margin: auto;
+    background-color: #222222;
 }
-@media (max-width: 600px) {
-    body {
-        margin-left: 0%;
-        margin-right: 0%;
-    }
+h1 {
+    width: fit-content;
+    outline-width: 5px;
+    outline-style: solid;
+    outline-color: black;
+    box-shadow: 20px 20px black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
 }
 .outlined {
     outline-width: 5px;
-    outline-style: dashed;
-    box-shadow: 20px 20px;
+    outline-style: solid;
+    outline-color: black;
+    box-shadow: 20px 20px black;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: black;
 }
