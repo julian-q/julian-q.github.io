@@ -8,12 +8,13 @@
 <script>
 	window.onload = function() {
 		let i = Math.floor(Math.random() * 9)
-		document.getElementById("random-photo").src = "img/nature/" + i + ".JPG"
+		document.getElementById("full-size").href = "img/nature/" + i + ".JPG"
+		document.getElementById("random-photo").src = "img/nature/" + i + "_small.JPG"
 	}
 </script>
 <body>
 	<center>
-	<img id="random-photo" class="outlined" src="" width="300px">
+	<a id="full-size"><img id="random-photo" class="outlined" width="300px"></a>
 	<h1>julian</h1>
 	</center>
 </body>
