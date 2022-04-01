@@ -34,5 +34,5 @@ p.entrylink {
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
 div.entry {
-    display: block;
+    display: none;
 }

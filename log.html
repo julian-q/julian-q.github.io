@@ -7,11 +7,12 @@
 </head>
 <script>
     function toggleEntry(id) {
-        display = document.getElementById(id).style.display;
+        let entry = document.getElementById(id);
+        let display = getComputedStyle(entry).display;
         if (display == "none") {
-            document.getElementById(id).style.display = "block";
+            entry.style.display = "block";
         } else {
-            document.getElementById(id).style.display = "none";
+            entry.style.display = "none";
         }
     }
 </script>
