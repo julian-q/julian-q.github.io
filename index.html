@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<title>julian</title>
-	<link rel="icon" href="img/graph.png">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="icon" href="/img/graph.png">
+	<link rel="stylesheet" href="/styles.css">
 </head>
 <script>
 	window.onload = function() {
@@ -11,17 +11,21 @@
 		if (isNaN(i)) {
 			i = 0;
 		}
-		document.getElementById("get-full-size").href = "img/nature/" + i + ".JPG";
-		document.getElementById("random-photo").src = "img/nature/" + i + "_small.jpg";
+		document.getElementById("get-full-size").href = "/photos/" + i + ".JPG";
+		document.getElementById("random-photo").src = "/photos/" + i + "_small.jpg";
 		localStorage.setItem('photoId', ((i + 1) % 7).toString());
 	}
 </script>
 <body>
 	<div style="float: right; text-align: right; line-height: 0px; position: relative; bottom: 0px;">
-		<img src="img/graph.png" width="64px">
-		<p><a href="photos.html">photos</a></p>
+		<img src="/img/graph.png" width="64px">
+		<p>
+			<a href="/photos">photos</a>
+			<a href="/moments">moments</a>
+			<a href="/sketches">sketches</a>
+		</p>
 	</div>
-	<a href="index.html" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
+	<a href="/" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
 	<a id="get-full-size"><img id="random-photo" class="outlined full-width"></a>
 </body>
 </html>
