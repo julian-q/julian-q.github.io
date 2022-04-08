@@ -5,48 +5,80 @@ function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
     canvas.parent("p5");
     frameRate(FPS);
-    // createLoop({duration: 9, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
+    colorMode(HSB, 360, 100, 100, 100);
+    createLoop({duration: 8, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
 }
 
-let gridX = -200;
+let meshMode = Array.from({length: 800}, (v, i) => false);
+let prevLoc = Array.from({length: 800}, (v, i) => [[0,0,0], [0,0,0], [0,0,0]]);
+let prevCol = Array.from({length: 800}, (v, i) => [0,0,0]);
+let newCol = [];
+for (let i = 0; i < faces.length; i++) {
+    if (faces[i][3] == 0) {
+        newCol.push("brown");
+    } else {
+        newCol.push("green");
+    }
+}
+let cellWidth = 5;
+let gridWidth = 20;
+let gridX = -1/2 * gridWidth * cellWidth;
 let gridY = 0;
-let gridZ = 150;
-let gridWidth = 10;
-let cellWidth = 200;
-let cellsPerLevel = 100;
-let ceilingHeight = 400;
+let gridZ = -1/2 * gridWidth * cellWidth;;
 function draw() {
+    let t = (frameCount / FPS);
     background(0);
-    push();
-    fill(0);
-    stroke(255);
-    translate(0, 0.35 * height, 0);
-    rotateY(PI / 4);
-    beginShape();
-    endShape();
-    beginShape(TRIANGLES);
-    let t = (frameCount / FPS) % 9;
-    let T = squareWave(t, -0.13, 1.135, 4.5, 0);
-    for (let i = 0; i < faces.length; i++) {
-        for (let j = 0; j < faces[i].length; j++) {
-            let v = faces[i][j];
-            let x0 = [0, cellWidth, cellWidth, 0, 0, cellWidth][j + (i % 2) * 3];
-            let y0 = 0
-            let z0 = [0, 0, cellWidth, 0, cellWidth, cellWidth][j + (i % 2) * 3];
-            x0 += gridX + (Math.floor(i / 2) % gridWidth) * cellWidth;
-            y0 += gridY - Math.floor(Math.floor(i / 2) / cellsPerLevel) * ceilingHeight;
-            z0 += gridZ - Math.floor((Math.floor(i / 2) % cellsPerLevel) / gridWidth) * cellWidth;
-            let x1 = v[0] * 50;
-            let y1 = -v[1] * 50;
-            let z1 = v[2] * 50;
-            let x = lerp(x0, x1, T);
-            let y = lerp(y0, y1, T);
-            let z = lerp(z0, z1, T);
-            vertex(x, y, z);
+    noFill();
+    translate(0, 0, 200);
+    rotateX(-PI / 4);
+    for (let i = 0; i < gridWidth; i++) {
+        for (let j = 0; j < gridWidth; j++) {
+            for (let k = 0; k < 2; k++) {
+                let inputs = [
+                    [gridX + i * cellWidth, gridZ + j * cellWidth],
+                    [gridX + (i + 1 - k) * cellWidth, gridZ + (j + k) * cellWidth],
+                    [gridX + (i + 1) * cellWidth, gridZ + (j + 1) * cellWidth]
+                    // [gridX + i * cellWidth, gridZ + j * cellWidth]
+                ];
+                
+
+                beginShape(TRIANGLES);
+                let T_pos = min(t - 3, 3) / 3;
+                let faceIndex = i * gridWidth * 2 + j * 2 + k;
+                if (!meshMode[faceIndex]) {
+                    noFill();
+                } else {
+                    fill(lerpColor(color(0, 0, 0, 0), color(newCol[faceIndex]), T_pos));
+                }
+                for (let v = 0; v < inputs.length; v++) {
+                    let x = inputs[v][0], z = inputs[v][1];
+                    let y = -50 * cos(0.5 * t - 0.05 * sqrt(sq(x) + sq(z)));
+                    let rainbow = color(y / 50 * 180 + 180, 50, 100, 100);
+                    stroke(rainbow);
+                    
+                    if (t > 3) {
+                        meshMode[faceIndex] = true;
+                        prevLoc[faceIndex][v] = [x, y, z];
+                        prevCol[faceIndex][v] = rainbow;
+                    }
+                    if (!meshMode[faceIndex]) {
+                        vertex(x, y, z);
+                    } else {
+                        let meshVertex = faces[faceIndex][v];
+                        let mx = meshVertex[0] * 15;
+                        let my = -meshVertex[1] * 15 + 90;
+                        let mz = meshVertex[2] * 15;
+                        let px = prevLoc[faceIndex][v][0];
+                        let py = prevLoc[faceIndex][v][1];
+                        let pz = prevLoc[faceIndex][v][2];
+                        stroke(lerpColor(prevCol[faceIndex][v], color(0, 0, 0, 0), T_pos));
+                        vertex(lerp(px, mx, T_pos), lerp(py, my, T_pos), lerp(pz, mz, T_pos));
+                    }
+                }
+                endShape();
+            }
         }
     }
-    endShape();
-    pop();
 }
 
 function osc(t, min, max, period, offset) {
