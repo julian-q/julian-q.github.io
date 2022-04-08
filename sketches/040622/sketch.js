@@ -31,7 +31,6 @@ function draw() {
     } else {
         T = smoothramp(t, 2);
     }
-    // T = squareWave(t, -0.13, 1.135, 4.5, 0);
     for (let i = 0; i < faces.length; i++) {
         fill(
             Math.floor(osc(i, 0, 255, 10, 0)),
