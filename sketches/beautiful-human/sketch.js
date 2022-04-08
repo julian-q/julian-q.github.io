@@ -5,7 +5,7 @@ function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
     canvas.parent("p5");
     frameRate(FPS);
-    // createLoop({duration: 9, gif: {download: true, options:{quality: 5}}, framesPerSecond: 60});
+    // createLoop({duration: 9, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
 }
 
 let gridX = -200;
@@ -18,8 +18,7 @@ let ceilingHeight = 400;
 function draw() {
     background(0);
     push();
-    fill(0);
-    stroke(255);
+    stroke(0);
     translate(0, 0.35 * height, 0);
     rotateY(PI / 4);
     beginShape();
@@ -32,14 +31,14 @@ function draw() {
     } else {
         T = smoothramp(t, 2);
     }
-    T = squareWave(t, -0.13, 1.135, 4.5, 0);
+    // T = squareWave(t, -0.13, 1.135, 4.5, 0);
     for (let i = 0; i < faces.length; i++) {
-        // fill(
-        //     Math.floor(osc(i, 0, 255, 10, 0)),
-        //     Math.floor(osc(i, 0, 255, 10, 3)),
-        //     Math.floor(osc(i, 0, 255, 10, 6)),
-        //     220
-        // );
+        fill(
+            Math.floor(osc(i, 0, 255, 10, 0)),
+            Math.floor(osc(i, 0, 255, 10, 3)),
+            Math.floor(osc(i, 0, 255, 10, 6)),
+            220
+        );
         for (let j = 0; j < faces[i].length; j++) {
             let v = faces[i][j];
             let x0 = [0, cellWidth, cellWidth, 0, 0, cellWidth][j + (i % 2) * 3];
