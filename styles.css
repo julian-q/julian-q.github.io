@@ -19,7 +19,7 @@ h1 {
     outline-color: black;
     box-shadow: 20px 20px black;
     margin-bottom: 30px;
-    width:fit-content;
+    width: fit-content;
 }
 .full-width {
     max-width: 100%;
