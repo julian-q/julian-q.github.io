@@ -9,11 +9,15 @@
 	window.onload = function() {
 		let i = parseInt(localStorage.getItem('photoId'));
 		if (isNaN(i)) {
-			i = 0;
+			i = 20;
 		}
 		document.getElementById("get-full-size").href = "/photos/" + i + ".JPG";
 		document.getElementById("random-photo").src = "/photos/" + i + "_small.jpg";
-		localStorage.setItem('photoId', ((i + 1) % 7).toString());
+		i -= 1;
+		if (i < 0) {
+			i = 21;
+		}
+		localStorage.setItem('photoId', i.toString());
 	}
 </script>
 <body>
@@ -21,8 +25,9 @@
 		<img src="/img/graph.png" width="64px">
 		<p>
 			<a href="/photos">photos</a>
-			<a href="/moments">moments</a>
 			<a href="/sketches">sketches</a>
+			<a href="https://github.com/julian-q">github</a>
+			<a href="https://twitter.com/julianhquevedo">twitter</a>
 		</p>
 	</div>
 	<a href="/" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
