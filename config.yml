@@ -1,7 +1,9 @@
-languageCode: en-us
-title: julian
-theme: PaperMod
-sectionPagesMenu: main
+
+baseUrl: "https://julian-q.github.io"
+languageCode: "en-us"
+title: "julian"
+theme: "PaperMod"
+sectionPagesMenu: "main"
 publishDir: "docs"
 
 params:
