@@ -2,6 +2,7 @@ languageCode: en-us
 title: julian
 theme: PaperMod
 sectionPagesMenu: main
+publishDir: "docs"
 
 params:
     profileMode:
