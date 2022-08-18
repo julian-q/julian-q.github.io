@@ -1,0 +1,14 @@
+languageCode: en-us
+title: julian
+theme: PaperMod
+sectionPagesMenu: main
+
+params:
+    profileMode:
+        enabled: true
+        title: "hello world" # optional default will be site title
+        subtitle: ""
+        imageUrl: "graph.png" # optional
+        imageTitle: "graph" # optional
+        imageWidth: 200 # custom size
+        imageHeight: 200 # custom size
