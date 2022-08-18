@@ -1,0 +1,4 @@
+baseURL = 'https://julian-q.github.io/'
+languageCode = 'en-us'
+title = 'julian'
+theme = 'PaperMod'
