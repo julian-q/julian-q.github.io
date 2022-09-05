@@ -22,6 +22,6 @@ here are some things i've worked on!
 
 <img src="content/img/dot-buddy.webp" class="thumb">
 
-[**dot-buddy:**](https://apps.apple.com/us/app/dot-buddy/id1456345387) an app that does a bunch of trigonometry to help drum and bugle corps march with accuracy.
+[**dot-buddy:**](https://apps.apple.com/us/app/dot-buddy/id1456345387) an app that does a bunch of trigonometry to help drum and bugle corps march with accuracy. **1.4K+ downloads on the iOS App Store.**
 
 [**i also really enjoy making programmatic animations with processing.**](/sketches)
