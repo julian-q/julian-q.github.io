@@ -18,7 +18,7 @@ here are some things i've worked on!
 
 <img src="content/img/magtrack1.png" class="thumb">
 
-[**magtrack:**](https://github.com/julian-q/magtrack) the Hogan Lab needed a device to characterize magnetic shielding in a vacuum tube. so, i made this arduino-powered device to do just that. i also programmed a red pitaya to [automate laser power regulation](https://github.com/julian-q/laser-control).
+[**magtrack:**](https://github.com/julian-q/magtrack) a device i made to characterize magnetic shielding in a vacuum tube during my time with the Hogan Lab. i also programmed a red pitaya to [automate laser power regulation](https://github.com/julian-q/laser-control).
 
 <img src="content/img/dot-buddy.webp" class="thumb">
 
