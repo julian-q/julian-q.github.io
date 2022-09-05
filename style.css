@@ -1,0 +1,30 @@
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body {
+    background-color: whitesmoke;
+    margin: auto;
+}
+p {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+table.bone {
+    margin-left: auto;
+    margin-right: auto;
+}
+td.banner {
+    vertical-align: bottom;
+    padding-bottom: 10px;
+    height: 80px;
+}
+td.left-column {
+    vertical-align: top;
+    width: 80px;
+    background-color: lightgreen;
+}
+td.main-column {
+    width: 500px;
+    outline-style: solid;
+    background-color: whitesmoke;
+}
