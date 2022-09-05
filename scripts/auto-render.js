@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+function renderMath() {
     renderMathInElement(document.body, {
     // customised options
     // • auto-render specific keys, e.g.:
@@ -11,4 +11,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // • rendering keys, e.g.:
     throwOnError : false
     });
-});
+}

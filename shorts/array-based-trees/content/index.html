@@ -1,0 +1,275 @@
+<h1 id="array-based-trees">Array-Based Trees</h1>
+<p>This is a tree!</p>
+<p><img src="content/img/tree.svg" /></p>
+<p>It's a <a
+href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed
+acyclic graph</a> (DAG) where each node has a single parent (except the
+root). What makes this one special, though, is that each of its nodes
+have at most two children -- a binary tree.</p>
+<h2 id="pointer-based-tree">Pointer-Based Tree</h2>
+<p>Binary trees are useful for all sorts of stuff. One way to implement
+them is by allocating an object for each node which stores a pointer to
+its parent and both its children. Kinda like this!</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode c++"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Node</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> key<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    Node <span class="op">*</span>parent<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    Node <span class="op">*</span>left_child<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    Node <span class="op">*</span>right_child<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> BinaryTree</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> size<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    Node <span class="op">*</span>root<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<h3 id="pros">Pros</h3>
+<ol type="1">
+<li><strong>Intuitive.</strong> The pointer-based solution allows you to
+easily traverse the tree without further computation: simply follow the
+pointers stored in each <code>Node</code>!</li>
+<li><strong>Nice Memory Scaling</strong>. The total memory used by the
+pointer-based tree is proportional to the number of nodes.</li>
+</ol>
+<h3 id="cons">Cons</h3>
+<ol type="1">
+<li><strong>Potentially Slow Access.</strong> If you want to reach a
+node which is many levels deep, you have to traverse each child node
+one-by-one starting from the root.</li>
+<li><strong>More Memory Per-Node.</strong> Each node must store the
+addresses of its parent and children. These days, C++ integers are <span
+class="math inline">4</span> bytes, while addresses are a whopping <span
+class="math inline">8</span> bytes. That means a (complete)
+pointer-based tree will use <span
+class="math inline">(3⋅8)/4 = 6 ×</span> more memory than if they just
+stored their <code>key</code>!</li>
+<li><strong>Bad Locality.</strong> We have no guarantee on where each
+<code>Node</code> object will be allocated in memory. Modern CPUs load
+memory in contiguous chunks called <a
+href="https://en.wikipedia.org/wiki/CPU_cache#Cache_entries"><em>cache
+blocks</em></a> -- with <code>Node</code> objects scattered all over the
+address space, we'll need to waste a lot of CPU cycles loading in
+different blocks.</li>
+</ol>
+<h2 id="array-based-tree">Array-Based Tree</h2>
+<p>There's another, super-cool way to represent binary trees, though:
+using an array!</p>
+<p><img src="content/img/array-based-tree.svg" /></p>
+<p>To do so, we can index each node in <a
+href="https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search">level-order</a>.
+That just means we order the nodes from top-to-bottom, then
+left-to-right. We end up with an array where the nodes in each level are
+stored contiguously, one level after another. Each element of the array
+just stores the key of the corresponding node.</p>
+<p>It might look like a flat log, but it's still a beautiful, branching
+tree!</p>
+<p>How will we ever find our parents? Where did our children go? Fear
+not: there's a simple formula. If we are node <span
+class="math inline"><em>i</em></span>, then our parent and child nodes
+are given by the following:</p>
+<p><img src="content/img/tree-formula.svg" /></p>
+<p>Let's see where these formulas actually come from. To do so, we need
+to establish a way to talk about specific nodes in the tree. Let <span
+class="math inline"><em>n</em></span> be the level of the tree a node
+resides in, and call <span class="math inline"><em>n</em> = 0</span> the
+index of the very top level. Let <span
+class="math inline"><em>k</em></span> be the left-to-right position of a
+node in a given level. Let's say <span
+class="math inline"><em>k</em> = 0</span> is the index of the leftmost
+node. We'll start by listing off where the first node in each level
+lands in the array.</p>
+<p><img src="content/img/array.svg" /></p>
+<ul>
+<li>The <span class="math inline"><em>k</em> = 0</span> node in level
+<span class="math inline"><em>n</em> = 0</span> (the root node) is at
+index <span class="math inline">0</span></li>
+<li>The <span class="math inline"><em>k</em> = 0</span> node in level
+<span class="math inline"><em>n</em> = 1</span> is at index <span
+class="math inline">1</span></li>
+<li>The <span class="math inline"><em>k</em> = 0</span> node in level
+<span class="math inline"><em>n</em> = 2</span> is at index <span
+class="math inline">3</span></li>
+<li>The <span class="math inline"><em>k</em> = 0</span> node in level
+<span class="math inline"><em>n</em> = 3</span> is at index <span
+class="math inline">7</span></li>
+</ul>
+<p>Do you see a pattern? The first (<span
+class="math inline"><em>k</em> = 0</span>) node in the <span
+class="math inline"><em>n</em>th</span> level is at index <span
+class="math display">$$i = 2^0 + 2^1 + \cdots + 2^{n-1} = \sum_{j =
+0}^{n - 1} 2^j.$$</span> What about the indices of the other nodes in
+that level, where <span class="math inline"><em>k</em> &gt; 0</span>?
+Well, since each level is stored contiguously in the array, all we have
+to do is add <span class="math inline"><em>k</em></span>. So, the index
+for the <span class="math inline"><em>k</em>th</span> node in level
+<span class="math inline"><em>n</em></span> is given by <span
+class="math display">$$i = \left(\sum_{j = 0}^{n - 1} 2^j\right) +
+k.$$</span> In a complete binary tree, where every parent node has two
+child nodes, the number of nodes doubles for each new level. This means
+there are <span class="math inline">2<sup><em>n</em></sup></span> nodes
+in level <span class="math inline"><em>n</em></span>. So, note that
+<span
+class="math inline"><em>k</em> ∈ [0,1,…,2<sup><em>n</em></sup>−1]</span>
+here!</p>
+<p>Let's find the parent of node <span
+class="math inline"><em>i</em></span>, which we know lives on the <span
+class="math inline"><em>n</em> − 1st</span> level of the tree. There are
+half as many nodes on this level. Thus, the left-to-right index of the
+parent in its level will be about half that of its child. Specifically,
+<strong>if node <span class="math inline"><em>i</em></span> is a
+left-child</strong>, then it's parent must be the <span
+class="math inline"><em>k</em>/2</span> node in it's level. Thus,</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n - 1) - 1} 2^j\right) +
+\frac{k}{2} \cr
+&amp;= \left(\sum_{j = 0}^{n - 2} 2^j\right) + \frac{k}{2} \cr
+&amp;= \left(\sum_{j = 0}^{n - 2} 2^j\right) \cdot \frac{2}{2} +
+\frac{k}{2} \cr
+&amp;= \frac{1}{2} \left[2 \left(\sum_{j = 0}^{n - 2} 2^j\right) +
+k\right] \cr
+&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 2} 2^{j + 1}\right) +
+k\right] \cr
+&amp;= \frac{1}{2} \left[\left(\sum_{j = 1}^{n - 1} 2^j\right) +
+k\right] \cr
+&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 1} 2^j\right) - 2^0 +
+k\right] \cr
+&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 1} 2^j\right) + k -
+1\right] \cr
+&amp;= \frac{i - 1}{2}. &amp;&amp;\color{red}(1)
+\end{aligned}
+$$</span></p>
+<p>On the other hand, <strong>if node <span
+class="math inline"><em>i</em></span> is a right-child</strong>, then
+it's parent is the <span class="math inline">(<em>k</em>−1)/2</span>
+node in level <span class="math inline"><em>n</em> − 1</span>. Following
+similar steps as above, we see that in this case,</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n - 1) - 1} 2^j\right) +
+\frac{k - 1}{2} \cr
+&amp;= \frac{i - 2}{2}. &amp;&amp;\color{red}(2)
+\end{aligned}
+$$</span></p>
+<p>To reach the form we saw in the diagram above, we just have to
+realize that <span class="math inline"><em>i</em></span> is odd when
+<span class="math inline"><em>i</em></span> is a left child, and <span
+class="math inline"><em>i</em></span> is even when it's a right child.
+When <span class="math inline"><em>i</em></span> is even, expression
+<span class="math inline">$\color{red}(1)$</span> is a whole number.
+When <span class="math inline"><em>i</em></span> is odd, expression
+<span class="math inline">$\color{red}(2)$</span> is fractional. So, we
+can unite the two cases by taking the floor: <span
+class="math display">$$\mathrm{parent}(i) = \boxed{\lfloor \frac{i -
+1}{2} \rfloor.}$$</span></p>
+<p>Whew, that was a lot of algebra! But we indeed found the desired
+formula for the parent of <span class="math inline"><em>i</em></span>.
+Now, let's find the left and right children of <span
+class="math inline"><em>i</em></span>. There's some more math here, but
+you'll see that it follows a similar logic to the steps above.</p>
+<p>The children of <span class="math inline"><em>i</em></span> should
+live downstairs in the <span class="math inline"><em>n</em> + 1st</span>
+level of the tree. There are twice as many nodes in this level. Thus,
+the left-to-right positions of the children should be about two times as
+big as <span class="math inline"><em>k</em></span> (the position of node
+<span class="math inline"><em>i</em></span> in level <span
+class="math inline"><em>n</em></span>). There are <span
+class="math inline"><em>k</em></span> other nodes that come before <span
+class="math inline"><em>i</em></span> in level <span
+class="math inline"><em>n</em></span>, each of which has two children.
+Thus, the positions of the left and right children in level <span
+class="math inline"><em>n</em> + 1</span> should be <span
+class="math inline">2<em>k</em></span> and <span
+class="math inline">2<em>k</em> + 1</span>, respectively.</p>
+<p>The index of the left child in the array is then given by</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathrm{left\text{-}child}(i) &amp;= \left(\sum_{j = 0}^{(n + 1) - 1}
+2^j\right) + 2k \cr
+&amp;= \left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) \cdot \frac{2}{2} +
+2k \cr
+&amp;= 2 \left[\frac{1}{2}\left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) +
+k \right] \cr
+&amp;= 2 \left[\left(\sum_{j = 0}^{(n + 1) - 1} 2^{j-1}\right) + k
+\right] \cr
+&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + 2^{-1} + k
+\right] \cr
+&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + k + \frac{1}{2}
+\right] \cr
+&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + k \right] + 1
+\cr
+&amp;= \boxed{2i + 1.}
+\end{aligned}
+$$</span></p>
+<p>Following similar steps as above, we find the index of the right
+child in the array to be</p>
+<p><span class="math display">$$
+\begin{aligned}
+\mathrm{right\text{-}child}(i) &amp;= \left(\sum_{j = 0}^{(n + 1) - 1}
+2^j\right) + 2k + 1 \cr
+&amp;= \boxed{2i + 2,}
+\end{aligned}
+$$</span></p>
+<p>which checks out with the diagram above! Yay!</p>
+<p>Let's see how we can implement an array-based tree in C++!</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode c++"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> BinaryTree</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> size<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="op">*</span>array<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    BinaryTree<span class="op">(</span><span class="dt">int</span> size<span class="op">)</span> <span class="op">:</span> size<span class="op">(</span>size<span class="op">),</span> array<span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">]);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">~</span>BinaryTree<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> <span class="op">[]</span>array<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="dt">int</span> parent<span class="op">(</span><span class="dt">int</span> i<span class="op">)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// integer division takes care of the floor operation:)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">(</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="dt">int</span> left_child<span class="op">(</span><span class="dt">int</span> i<span class="op">)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> <span class="dt">int</span> right_child<span class="op">(</span><span class="dt">int</span> i<span class="op">)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> i <span class="op">+</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">// you might want to do some out-of-bounds error checking if you&#39;re </span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">// going to do this right.</span></span></code></pre></div>
+<h3 id="pros-1">Pros</h3>
+<ol type="1">
+<li><strong>Fast Access.</strong> We can get the key of <em>any</em>
+node in our tree with an <span class="math inline"><em>O</em>(1)</span>
+access to our array.</li>
+<li><strong>Less Memory Per-Node.</strong> Each node just stores its
+key. (After all, it's just an element in an array.)</li>
+<li><strong>Great Locality.</strong> Arrays are guaranteed to be
+contiguous blocks of memory. That means we'll need to load far fewer
+cache blocks, which makes our program run faster.</li>
+</ol>
+<h3 id="cons-1">Cons</h3>
+<ol type="1">
+<li><strong>Memory Scales with Levels.</strong> Array-based trees can
+support incomplete trees (in which some nodes are missing children). You
+can do so by storing a sentinal value in those children's slots, say,
+<span class="math inline"> − 1</span>. For a tree with many missing
+nodes, there may end up being more sentinal values than actual keys as
+the number of levels increases. So, array-based trees are best suited
+for complete trees (which is why they are often used for implementing <a
+href="https://en.wikipedia.org/wiki/Binary_heap">binary heaps</a>).</li>
+<li><strong>Slow to Resize.</strong> Typically, arrays are fixed-sized.
+In the case that we need to add more nodes than we have space for, we'll
+need to allocate an entirely new array and copy all the existing keys
+over one-by-one.</li>
+</ol>
+<p>Array-based trees are so cool! But, when I first learned about them,
+I was really confused where the index formulas came from, and why they
+looked so simple given how unnatural it seemed to flatten a tree. Now, I
+hope you have a better understanding of how the math works out, as well
+as the costs and benefits of both tree representations! If you have any
+questions, or feedback on how I can improve this explanation, <a
+href="/contact">drop me a line</a>!</p>
