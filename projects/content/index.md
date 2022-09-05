@@ -2,7 +2,7 @@ here are some things i've worked on!
 
 <img src="content/img/kgene.png" class="thumb">
 
-[**kgene:**](https://github.com/julian-q/kgene) a BERT-powered knowledge graph generator. enter a URL of your choice, and this tool will scrape the site and [extracted named entities](https://en.wikipedia.org/wiki/Named-entity_recognition) from the text on each page. it shows you how each page is related to each other via the entities in common between them, and you get to see some neat community structures! i'm curious about how tools like this can help us find hidden connections within our thoughts and across the Web.
+[**kgene:**](https://github.com/julian-q/kgene) a BERT-powered knowledge graph generator. enter a URL of your choice, and this tool will scrape the site and [extracted named entities](https://en.wikipedia.org/wiki/Named-entity_recognition) from the text on each page. it shows you how each page is related to each other via the entities in common between them, and you get to see some neat community structures! i'm curious about how tools like this can help us find hidden connections within our thoughts and information across the Web.
 
 <img src="content/img/GATE.png" class="thumb">
 
