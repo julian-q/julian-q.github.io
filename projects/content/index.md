@@ -6,7 +6,7 @@ here are some things i've worked on!
 
 <img src="content/img/GATE.png" class="thumb">
 
-[**gate:**](https://github.com/julian-q/fmri-analysis) an implementation of the [Graph Attention Transformer Encoder](https://arxiv.org/abs/2010.03009) in PyTorch Geometric, interpreted as a graph neural network. it's similar to the [Graph Attention Network](https://arxiv.org/abs/1710.10903) but with a slightly different attention mechanism.
+[**gate:**](https://github.com/julian-q/fmri-analysis) an implementation of the [Graph Attention Transformer Encoder](https://arxiv.org/abs/2010.03009) in PyTorch Geometric, interpreted as a graph neural network. it's similar to the [Graph Attention Network](https://arxiv.org/abs/1710.10903) but with a different attention mechanism.
 
 <img src="content/img/pong.png" class="thumb">
 
