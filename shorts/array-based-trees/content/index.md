@@ -4,7 +4,7 @@ This is a tree!
 
 ![](content/img/tree.svg)
 
-It's a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) where each node has a single parent (except the root). What makes this one special, though, is that each of its nodes have at most two children -- a binary tree.
+A tree is a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) where each node has a single parent (except the root). What makes this one special, though, is that each of its nodes have at most two children -- a binary tree.
 
 ## Pointer-Based Tree
 Binary trees are useful for all sorts of stuff. One way to implement them is by allocating an object for each node which stores a pointer to its parent and both its children. Kinda like this!
