@@ -10,7 +10,7 @@ here are some things i've worked on!
 
 <img src="content/img/bigchair.png" class="thumb">
 
-[**bigchair:**](/pdf/bigchair.pdf) [CLIP](https://openai.com/blog/clip/), but 3D. in collaboration with my amazing friends Pino Cholsaipant and [Sidney Hough](https://www.shough.me), we used contrastive learning to retrieve colored 3D meshes from natural language descriptions.
+[**bigchair:**](/pdf/bigchair.pdf) [CLIP](https://openai.com/blog/clip/), but 3D. a collaboration with my amazing friends Pino Cholsaipant and [Sidney Hough](https://www.shough.me). we used contrastive learning to retrieve colored 3D meshes from natural language descriptions!
 
 <img src="content/img/pong.png" class="thumb">
 
