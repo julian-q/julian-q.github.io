@@ -3,34 +3,34 @@ body:not(.katex) {
     margin: auto;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-table.bone {
+table#bone {
     margin-left: auto;
     margin-right: auto;
 }
-td:not(.icon) {
+td:not(#icon) {
     vertical-align: top;
 }
-td.banner {
+td#banner {
     vertical-align: bottom;
     padding-bottom: 10px;
     height: 80px;
 }
-td.left-column {
+td#left-column {
     width: 60px;
     background-color: lightgreen;
     outline-style: solid;
 }
-td.left-column > p {
+td#left-column > p {
     margin-top: 0px;
     margin-bottom: 5px;
 }
-td.main-column {
+td#main-column {
     width: 600px;
     max-width: 600px;
     background-color: whitesmoke;
     outline-style: solid;
 }
-td.main-column > p, h1:first-of-type {
+td#main-column > p, h1:first-of-type {
     margin-top: 0px;
 }
 div#footer {
