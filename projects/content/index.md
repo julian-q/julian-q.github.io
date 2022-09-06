@@ -8,6 +8,10 @@ here are some things i've worked on!
 
 [**gate:**](https://github.com/julian-q/fmri-analysis) an implementation of the [Graph Attention Transformer Encoder](https://arxiv.org/abs/2010.03009) in PyTorch Geometric, interpreted as a graph neural network. it's similar to the [Graph Attention Network](https://arxiv.org/abs/1710.10903) but with a different attention mechanism.
 
+<img src="content/img/bigchair.png" class="thumb">
+
+[**bigchair:**](/pdf/bigchair.pdf) [CLIP](https://openai.com/blog/clip/), but 3D. in collaboration with my amazing friends Pino Cholsaipant and [Sidney Hough](https://www.shough.me), we used contrastive learning to retrieve colored 3D meshes from natural language descriptions.
+
 <img src="content/img/pong.png" class="thumb">
 
 [**policy gradient:**](https://github.com/julian-q/policy-gradient) an implementation of two simple reinforcement learning algorithms in NumPy. this agent learns to play pong!
