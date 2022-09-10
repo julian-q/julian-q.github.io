@@ -44,6 +44,9 @@ div#content {
     margin-right: auto;
     margin-bottom: 5rem;
 }
+div#content > p, li {
+    margin-bottom: 1em;
+}
 div#content > p:first-of-type, h1:first-of-type {
     margin-top: 0;
 }
@@ -53,6 +56,9 @@ div#footer {
     margin-right: auto;
     text-align: center;
     font-size: 0.75rem;
+}
+a {
+    color: blue;
 }
 a#home-link {
     color: black;
@@ -73,8 +79,14 @@ a#home-link {
 /* Light mode */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: darkslategray;
+        background-color: #222222;
         color: white;
+    }
+    div#nav ul {
+        background-color: black;
+    }
+    a {
+        color: magenta;
     }
     a#home-link {
         color: white;
