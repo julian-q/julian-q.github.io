@@ -2,7 +2,7 @@
 
 This is a tree!
 
-![](content/img/tree.svg)
+![](/shorts/array-based-trees/content/img/tree.svg)
 
 A tree is a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) where each node has a single parent (except the root). What makes this one special, though, is that each of its nodes have at most two children -- a binary tree.
 
@@ -37,7 +37,7 @@ struct BinaryTree
 ## Array-Based Tree
 There's another, super-cool way to represent binary trees, though: using an array!
 
-![](content/img/array-based-tree.svg)
+![](/shorts/array-based-trees/content/img/array-based-tree.svg)
 
 To do so, we can index each node in [level-order](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search). That just means we order the nodes from top-to-bottom, then left-to-right. We end up with an array where the nodes in each level are stored contiguously, one level after another. Each element of the array just stores the key of the corresponding node.
 
@@ -45,18 +45,30 @@ It might look like a flat log, but it's still a beautiful, branching tree!
 
 How will we ever find our parents? Where did our children go? Fear not: there's a simple formula. If we are node $i$, then our parent and child nodes are given by the following:
 
-![](content/img/tree-formula.svg)
+![](/shorts/array-based-trees/content/img/tree-formula.svg)
 
 Let's see where these formulas actually come from. To do so, we need to establish a way to talk about specific nodes in the tree. Let $n$ be the level of the tree a node resides in, and call $n = 0$ the index of the very top level. Let $k$ be the left-to-right position of a node in a given level. Let's say $k = 0$ is the index of the leftmost node. We'll start by listing off where the first node in each level lands in the array.
 
-![](content/img/array.svg)
+![](/shorts/array-based-trees/content/img/array.svg)
 
 - The $k = 0$ node in level $n = 0$ (the root node) is at index $0$
 - The $k = 0$ node in level $n = 1$ is at index $1$
 - The $k = 0$ node in level $n = 2$ is at index $3$
 - The $k = 0$ node in level $n = 3$ is at index $7$
 
-Do you see a pattern? The first ($k = 0$) node in the $n\text{th}$ level is at index $$i = 2^0 + 2^1 + \cdots + 2^{n-1} = \sum_{j = 0}^{n - 1} 2^j.$$ What about the indices of the other nodes in that level, where $k > 0$? Well, since each level is stored contiguously in the array, all we have to do is add $k$. So, the index for the $k\text{th}$ node in level $n$ is given by $$i = \left(\sum_{j = 0}^{n - 1} 2^j\right) + k.$$ In a complete binary tree, where every parent node has two child nodes, the number of nodes doubles for each new level. This means there are $2^n$ nodes in level $n$. So, note that $k \in [0, 1, \ldots, 2^n - 1]$ here!
+Do you see a pattern? The first ($k = 0$) node in the $n\text{th}$ level is at index 
+
+$$
+i = 2^0 + 2^1 + \cdots + 2^{n-1} = \sum_{j = 0}^{n - 1} 2^j.
+$$ 
+
+What about the indices of the other nodes in that level, where $k > 0$? Well, since each level is stored contiguously in the array, all we have to do is add $k$. So, the index for the $k\text{th}$ node in level $n$ is given by 
+
+$$
+i = \left(\sum_{j = 0}^{n - 1} 2^j\right) + k.
+$$ 
+
+In a complete binary tree, where every parent node has two child nodes, the number of nodes doubles for each new level. This means there are $2^n$ nodes in level $n$. So, note that $k \in [0, 1, \ldots, 2^n - 1]$ here!
 
 Let's find the parent of node $i$, which we know lives on the $n - 1\text{st}$ level of the tree. There are half as many nodes on this level. Thus, the left-to-right index of the parent in its level will be about half that of its child. Specifically, **if node $i$ is a left-child**, then it's parent must be the $k/2$ node in it's level. Thus, 
 
@@ -83,7 +95,11 @@ $$
 \end{aligned}
 $$
 
-To reach the form we saw in the diagram above, we just have to realize that $i$ is odd when $i$ is a left child, and $i$ is even when it's a right child. When $i$ is even, expression $\color{red}(1)$ is a whole number. When $i$ is odd, expression $\color{red}(2)$ is fractional. So, we can unite the two cases by taking the floor: $$\mathrm{parent}(i) = \boxed{\lfloor \frac{i - 1}{2} \rfloor.}$$
+To reach the form we saw in the diagram above, we just have to realize that $i$ is odd when $i$ is a left child, and $i$ is even when it's a right child. When $i$ is even, expression $\color{red}(1)$ is a whole number. When $i$ is odd, expression $\color{red}(2)$ is fractional. So, we can unite the two cases by taking the floor: 
+
+$$
+\mathrm{parent}(i) = \boxed{\lfloor \frac{i - 1}{2} \rfloor.}
+$$
 
 Whew, that was a lot of algebra! But we indeed found the desired formula for the parent of $i$. Now, let's find the left and right children of $i$. There's some more math here, but you'll see that it follows a similar logic to the steps above.
 
@@ -142,8 +158,7 @@ struct BinaryTree
         return 2 * i + 2;
     }
 };
-// you might want to do some out-of-bounds error checking if you're 
-// going to do this right.
+// you might want to do some out-of-bounds error checking
 ```
 
 ### Pros
