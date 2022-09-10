@@ -1,47 +1,85 @@
 body:not(.katex) {
-    background-color: whitesmoke;
-    margin: auto;
+    margin-top: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-table#bone {
-    margin-left: auto;
-    margin-right: auto;
+body {
+    font-size: 1rem;
 }
-td:not(#icon) {
-    vertical-align: top;
+.katex {
+    line-height: 1rem !important;
 }
-td#banner {
-    vertical-align: bottom;
-    padding-bottom: 10px;
-    height: 80px;
-}
-td#left-column {
-    width: 60px;
-    background-color: lightgreen;
-    outline-style: solid;
-}
-td#left-column > p {
-    margin-top: 0px;
-    margin-bottom: 5px;
-}
-td#main-column {
-    width: 600px;
-    max-width: 600px;
-    background-color: whitesmoke;
-    outline-style: solid;
-}
-td#main-column > p, h1:first-of-type {
-    margin-top: 0px;
-}
-div#footer {
-    font-size: 10px;
+img#icon {
+    width: 5rem;
 }
 img.thumb {
-    height: 100px;
+    height: 5rem;
+}
+aside#sidebar {
+    width: calc(50% - 17.5rem);
+    float: left;
+}
+div#nav {
+    width: 5rem;
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+}
+div#nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: lightgreen;
+}
+div#nav ul > li, p {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+div#nav ul > li:last-of-type {
+    margin-bottom: 0;
+}
+div#content {
+    width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+}
+div#content > p:first-of-type, h1:first-of-type {
+    margin-top: 0;
+}
+div#footer {
+    width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 0.75rem;
 }
 a#home-link {
     color: black;
     text-decoration: none;
+}
+@media only screen and (max-width: 768px) {    
+    aside#sidebar, div#nav, div#content, div#footer {
+        float: none;
+        width: 100%;
+    }
+    div#nav {
+        text-align: left;
+    }
+    div#nav ul > li {
+        display: inline-block;
+    }
+}
+/* Light mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: darkslategray;
+        color: white;
+    }
+    a#home-link {
+        color: white;
+        text-decoration: none;
+    }
 }
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}

@@ -38,12 +38,10 @@ pointer-based tree is proportional to the number of nodes.</li>
 node which is many levels deep, you have to traverse each child node
 one-by-one starting from the root.</li>
 <li><strong>More Memory Per-Node.</strong> Each node must store the
-addresses of its parent and children. These days, C++ integers are <span
-class="math inline">4</span> bytes, while addresses are a whopping <span
-class="math inline">8</span> bytes. That means a (complete)
-pointer-based tree will use <span
-class="math inline">(3⋅8)/4 = 6 ×</span> more memory than if they just
-stored their <code>key</code>!</li>
+addresses of its parent and children. These days, C++ integers are $4$
+bytes, while addresses are a whopping $8$ bytes. That means a (complete)
+pointer-based tree will use $(3 \cdot 8) / 4 = 6\ \times$ more memory
+than if they just stored their <code>key</code>!</li>
 <li><strong>Bad Locality.</strong> We have no guarantee on where each
 <code>Node</code> object will be allocated in memory. Modern CPUs load
 memory in contiguous chunks called <a
@@ -65,152 +63,90 @@ just stores the key of the corresponding node.</p>
 <p>It might look like a flat log, but it's still a beautiful, branching
 tree!</p>
 <p>How will we ever find our parents? Where did our children go? Fear
-not: there's a simple formula. If we are node <span
-class="math inline"><em>i</em></span>, then our parent and child nodes
-are given by the following:</p>
+not: there's a simple formula. If we are node $i$, then our parent and
+child nodes are given by the following:</p>
 <p><img src="content/img/tree-formula.svg" /></p>
 <p>Let's see where these formulas actually come from. To do so, we need
-to establish a way to talk about specific nodes in the tree. Let <span
-class="math inline"><em>n</em></span> be the level of the tree a node
-resides in, and call <span class="math inline"><em>n</em> = 0</span> the
-index of the very top level. Let <span
-class="math inline"><em>k</em></span> be the left-to-right position of a
-node in a given level. Let's say <span
-class="math inline"><em>k</em> = 0</span> is the index of the leftmost
-node. We'll start by listing off where the first node in each level
-lands in the array.</p>
+to establish a way to talk about specific nodes in the tree. Let $n$ be
+the level of the tree a node resides in, and call $n = 0$ the index of
+the very top level. Let $k$ be the left-to-right position of a node in a
+given level. Let's say $k = 0$ is the index of the leftmost node. We'll
+start by listing off where the first node in each level lands in the
+array.</p>
 <p><img src="content/img/array.svg" /></p>
 <ul>
-<li>The <span class="math inline"><em>k</em> = 0</span> node in level
-<span class="math inline"><em>n</em> = 0</span> (the root node) is at
-index <span class="math inline">0</span></li>
-<li>The <span class="math inline"><em>k</em> = 0</span> node in level
-<span class="math inline"><em>n</em> = 1</span> is at index <span
-class="math inline">1</span></li>
-<li>The <span class="math inline"><em>k</em> = 0</span> node in level
-<span class="math inline"><em>n</em> = 2</span> is at index <span
-class="math inline">3</span></li>
-<li>The <span class="math inline"><em>k</em> = 0</span> node in level
-<span class="math inline"><em>n</em> = 3</span> is at index <span
-class="math inline">7</span></li>
+<li>The $k = 0$ node in level $n = 0$ (the root node) is at index
+$0$</li>
+<li>The $k = 0$ node in level $n = 1$ is at index $1$</li>
+<li>The $k = 0$ node in level $n = 2$ is at index $3$</li>
+<li>The $k = 0$ node in level $n = 3$ is at index $7$</li>
 </ul>
-<p>Do you see a pattern? The first (<span
-class="math inline"><em>k</em> = 0</span>) node in the <span
-class="math inline"><em>n</em>th</span> level is at index <span
-class="math display">$$i = 2^0 + 2^1 + \cdots + 2^{n-1} = \sum_{j =
-0}^{n - 1} 2^j.$$</span> What about the indices of the other nodes in
-that level, where <span class="math inline"><em>k</em> &gt; 0</span>?
-Well, since each level is stored contiguously in the array, all we have
-to do is add <span class="math inline"><em>k</em></span>. So, the index
-for the <span class="math inline"><em>k</em>th</span> node in level
-<span class="math inline"><em>n</em></span> is given by <span
-class="math display">$$i = \left(\sum_{j = 0}^{n - 1} 2^j\right) +
-k.$$</span> In a complete binary tree, where every parent node has two
-child nodes, the number of nodes doubles for each new level. This means
-there are <span class="math inline">2<sup><em>n</em></sup></span> nodes
-in level <span class="math inline"><em>n</em></span>. So, note that
-<span
-class="math inline"><em>k</em> ∈ [0,1,…,2<sup><em>n</em></sup>−1]</span>
+<p>Do you see a pattern? The first ($k = 0$) node in the $n\text{th}$
+level is at index $$i = 2^0 + 2^1 + \cdots + 2^{n-1} = \sum_{j = 0}^{n -
+1} 2^j.$$ What about the indices of the other nodes in that level, where
+$k &gt; 0$? Well, since each level is stored contiguously in the array,
+all we have to do is add $k$. So, the index for the $k\text{th}$ node in
+level $n$ is given by $$i = \left(\sum_{j = 0}^{n - 1} 2^j\right) + k.$$
+In a complete binary tree, where every parent node has two child nodes,
+the number of nodes doubles for each new level. This means there are
+$2^n$ nodes in level $n$. So, note that $k \in [0, 1, \ldots, 2^n - 1]$
 here!</p>
-<p>Let's find the parent of node <span
-class="math inline"><em>i</em></span>, which we know lives on the <span
-class="math inline"><em>n</em> − 1st</span> level of the tree. There are
-half as many nodes on this level. Thus, the left-to-right index of the
-parent in its level will be about half that of its child. Specifically,
-<strong>if node <span class="math inline"><em>i</em></span> is a
-left-child</strong>, then it's parent must be the <span
-class="math inline"><em>k</em>/2</span> node in it's level. Thus,</p>
-<p><span class="math display">$$
-\begin{aligned}
-\mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n - 1) - 1} 2^j\right) +
-\frac{k}{2} \cr
-&amp;= \left(\sum_{j = 0}^{n - 2} 2^j\right) + \frac{k}{2} \cr
-&amp;= \left(\sum_{j = 0}^{n - 2} 2^j\right) \cdot \frac{2}{2} +
-\frac{k}{2} \cr
-&amp;= \frac{1}{2} \left[2 \left(\sum_{j = 0}^{n - 2} 2^j\right) +
-k\right] \cr
-&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 2} 2^{j + 1}\right) +
-k\right] \cr
-&amp;= \frac{1}{2} \left[\left(\sum_{j = 1}^{n - 1} 2^j\right) +
-k\right] \cr
-&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 1} 2^j\right) - 2^0 +
-k\right] \cr
-&amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 1} 2^j\right) + k -
-1\right] \cr
-&amp;= \frac{i - 1}{2}. &amp;&amp;\color{red}(1)
-\end{aligned}
-$$</span></p>
-<p>On the other hand, <strong>if node <span
-class="math inline"><em>i</em></span> is a right-child</strong>, then
-it's parent is the <span class="math inline">(<em>k</em>−1)/2</span>
-node in level <span class="math inline"><em>n</em> − 1</span>. Following
+<p>Let's find the parent of node $i$, which we know lives on the $n -
+1\text{st}$ level of the tree. There are half as many nodes on this
+level. Thus, the left-to-right index of the parent in its level will be
+about half that of its child. Specifically, <strong>if node $i$ is a
+left-child</strong>, then it's parent must be the $k/2$ node in it's
+level. Thus,</p>
+<p>$$ \begin{aligned} \mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n -
+1) - 1} 2^j\right) + \frac{k}{2} \cr &amp;= \left(\sum_{j = 0}^{n - 2}
+2^j\right) + \frac{k}{2} \cr &amp;= \left(\sum_{j = 0}^{n - 2}
+2^j\right) \cdot \frac{2}{2} + \frac{k}{2} \cr &amp;= \frac{1}{2}
+\left[2 \left(\sum_{j = 0}^{n - 2} 2^j\right) + k\right] \cr &amp;=
+\frac{1}{2} \left[\left(\sum_{j = 0}^{n - 2} 2^{j + 1}\right) + k\right]
+\cr &amp;= \frac{1}{2} \left[\left(\sum_{j = 1}^{n - 1} 2^j\right) +
+k\right] \cr &amp;= \frac{1}{2} \left[\left(\sum_{j = 0}^{n - 1}
+2^j\right) - 2^0 + k\right] \cr &amp;= \frac{1}{2} \left[\left(\sum_{j =
+0}^{n - 1} 2^j\right) + k - 1\right] \cr &amp;= \frac{i - 1}{2}.
+&amp;&amp;\color{red}(1) \end{aligned} $$</p>
+<p>On the other hand, <strong>if node $i$ is a right-child</strong>,
+then it's parent is the $(k-1)/2$ node in level $n - 1$. Following
 similar steps as above, we see that in this case,</p>
-<p><span class="math display">$$
-\begin{aligned}
-\mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n - 1) - 1} 2^j\right) +
-\frac{k - 1}{2} \cr
-&amp;= \frac{i - 2}{2}. &amp;&amp;\color{red}(2)
-\end{aligned}
-$$</span></p>
+<p>$$ \begin{aligned} \mathrm{parent}(i) &amp;= \left(\sum_{j = 0}^{(n -
+1) - 1} 2^j\right) + \frac{k - 1}{2} \cr &amp;= \frac{i - 2}{2}.
+&amp;&amp;\color{red}(2) \end{aligned} $$</p>
 <p>To reach the form we saw in the diagram above, we just have to
-realize that <span class="math inline"><em>i</em></span> is odd when
-<span class="math inline"><em>i</em></span> is a left child, and <span
-class="math inline"><em>i</em></span> is even when it's a right child.
-When <span class="math inline"><em>i</em></span> is even, expression
-<span class="math inline">$\color{red}(1)$</span> is a whole number.
-When <span class="math inline"><em>i</em></span> is odd, expression
-<span class="math inline">$\color{red}(2)$</span> is fractional. So, we
-can unite the two cases by taking the floor: <span
-class="math display">$$\mathrm{parent}(i) = \boxed{\lfloor \frac{i -
-1}{2} \rfloor.}$$</span></p>
+realize that $i$ is odd when $i$ is a left child, and $i$ is even when
+it's a right child. When $i$ is even, expression $\color{red}(1)$ is a
+whole number. When $i$ is odd, expression $\color{red}(2)$ is
+fractional. So, we can unite the two cases by taking the floor:
+$$\mathrm{parent}(i) = \boxed{\lfloor \frac{i - 1}{2} \rfloor.}$$</p>
 <p>Whew, that was a lot of algebra! But we indeed found the desired
-formula for the parent of <span class="math inline"><em>i</em></span>.
-Now, let's find the left and right children of <span
-class="math inline"><em>i</em></span>. There's some more math here, but
-you'll see that it follows a similar logic to the steps above.</p>
-<p>The children of <span class="math inline"><em>i</em></span> should
-live downstairs in the <span class="math inline"><em>n</em> + 1st</span>
+formula for the parent of $i$. Now, let's find the left and right
+children of $i$. There's some more math here, but you'll see that it
+follows a similar logic to the steps above.</p>
+<p>The children of $i$ should live downstairs in the $n + 1\text{st}$
 level of the tree. There are twice as many nodes in this level. Thus,
 the left-to-right positions of the children should be about two times as
-big as <span class="math inline"><em>k</em></span> (the position of node
-<span class="math inline"><em>i</em></span> in level <span
-class="math inline"><em>n</em></span>). There are <span
-class="math inline"><em>k</em></span> other nodes that come before <span
-class="math inline"><em>i</em></span> in level <span
-class="math inline"><em>n</em></span>, each of which has two children.
-Thus, the positions of the left and right children in level <span
-class="math inline"><em>n</em> + 1</span> should be <span
-class="math inline">2<em>k</em></span> and <span
-class="math inline">2<em>k</em> + 1</span>, respectively.</p>
+big as $k$ (the position of node $i$ in level $n$). There are $k$ other
+nodes that come before $i$ in level $n$, each of which has two children.
+Thus, the positions of the left and right children in level $n + 1$
+should be $2k$ and $2k + 1$, respectively.</p>
 <p>The index of the left child in the array is then given by</p>
-<p><span class="math display">$$
-\begin{aligned}
-\mathrm{left\text{-}child}(i) &amp;= \left(\sum_{j = 0}^{(n + 1) - 1}
-2^j\right) + 2k \cr
-&amp;= \left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) \cdot \frac{2}{2} +
-2k \cr
-&amp;= 2 \left[\frac{1}{2}\left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) +
-k \right] \cr
-&amp;= 2 \left[\left(\sum_{j = 0}^{(n + 1) - 1} 2^{j-1}\right) + k
-\right] \cr
-&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + 2^{-1} + k
-\right] \cr
-&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + k + \frac{1}{2}
-\right] \cr
-&amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) + k \right] + 1
-\cr
-&amp;= \boxed{2i + 1.}
-\end{aligned}
-$$</span></p>
+<p>$$ \begin{aligned} \mathrm{left\text{-}child}(i) &amp;= \left(\sum_{j
+= 0}^{(n + 1) - 1} 2^j\right) + 2k \cr &amp;= \left(\sum_{j = 0}^{(n +
+1) - 1} 2^j\right) \cdot \frac{2}{2} + 2k \cr &amp;= 2
+\left[\frac{1}{2}\left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) + k \right]
+\cr &amp;= 2 \left[\left(\sum_{j = 0}^{(n + 1) - 1} 2^{j-1}\right) + k
+\right] \cr &amp;= 2 \left[\left(\sum_{j = 0}^{n - 1} 2^{j}\right) +
+2^{-1} + k \right] \cr &amp;= 2 \left[\left(\sum_{j = 0}^{n - 1}
+2^{j}\right) + k + \frac{1}{2} \right] \cr &amp;= 2 \left[\left(\sum_{j
+= 0}^{n - 1} 2^{j}\right) + k \right] + 1 \cr &amp;= \boxed{2i + 1.}
+\end{aligned} $$</p>
 <p>Following similar steps as above, we find the index of the right
 child in the array to be</p>
-<p><span class="math display">$$
-\begin{aligned}
-\mathrm{right\text{-}child}(i) &amp;= \left(\sum_{j = 0}^{(n + 1) - 1}
-2^j\right) + 2k + 1 \cr
-&amp;= \boxed{2i + 2,}
-\end{aligned}
-$$</span></p>
+<p>$$ \begin{aligned} \mathrm{right\text{-}child}(i) &amp;=
+\left(\sum_{j = 0}^{(n + 1) - 1} 2^j\right) + 2k + 1 \cr &amp;=
+\boxed{2i + 2,} \end{aligned} $$</p>
 <p>which checks out with the diagram above! Yay!</p>
 <p>Let's see how we can implement an array-based tree in C++!</p>
 <div class="sourceCode" id="cb2"><pre
@@ -243,8 +179,7 @@ class="sourceCode c++"><code class="sourceCode cpp"><span id="cb2-1"><a href="#c
 <h3 id="pros-1">Pros</h3>
 <ol type="1">
 <li><strong>Fast Access.</strong> We can get the key of <em>any</em>
-node in our tree with an <span class="math inline"><em>O</em>(1)</span>
-access to our array.</li>
+node in our tree with an $O(1)$ access to our array.</li>
 <li><strong>Less Memory Per-Node.</strong> Each node just stores its
 key. (After all, it's just an element in an array.)</li>
 <li><strong>Great Locality.</strong> Arrays are guaranteed to be
@@ -256,10 +191,10 @@ cache blocks, which makes our program run faster.</li>
 <li><strong>Memory Scales with Levels.</strong> Array-based trees can
 support incomplete trees (in which some nodes are missing children). You
 can do so by storing a sentinal value in those children's slots, say,
-<span class="math inline"> − 1</span>. For a tree with many missing
-nodes, there may end up being more sentinal values than actual keys as
-the number of levels increases. So, array-based trees are best suited
-for complete trees (which is why they are often used for implementing <a
+$-1$. For a tree with many missing nodes, there may end up being more
+sentinal values than actual keys as the number of levels increases. So,
+array-based trees are best suited for complete trees (which is why they
+are often used for implementing <a
 href="https://en.wikipedia.org/wiki/Binary_heap">binary heaps</a>).</li>
 <li><strong>Slow to Resize.</strong> Typically, arrays are fixed-sized.
 In the case that we need to add more nodes than we have space for, we'll
