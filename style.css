@@ -42,7 +42,6 @@ div#content {
     width: 35rem;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5rem;
 }
 div#content > p, li {
     margin-bottom: 1em;
