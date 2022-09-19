@@ -2,7 +2,7 @@ here are some things i've worked on!
 
 <img src="content/img/hgcn.png" class="thumb">
 
-[**HGCN efficiency:**](https://github.com/pyg-team/pytorch_geometric/pull/5453) i adapted [Hyperbolic GCN](https://arxiv.org/abs/1910.12933) to PyTorch Geometric, significantly reducing its training time by using vectorized manifold projections. i hope to continue work here, and one day make HGCN an official feature of PyTorch Geometric so more people can take advantage of its increased expressiveness over hierarchical graphs (e.g. tree structures!)
+[**HGCN efficiency:**](https://github.com/pyg-team/pytorch_geometric/pull/5453) an adaptation of [Hyperbolic GCN](https://arxiv.org/abs/1910.12933) to PyTorch Geometric with significantly reduced training time thanks to vectorized manifold projections. i hope to continue work here, and one day make HGCN an official feature of PyTorch Geometric so more people can take advantage of its increased expressiveness over hierarchical graphs (e.g. tree structures!)
 
 <img src="content/img/kgene.png" class="thumb">
 
