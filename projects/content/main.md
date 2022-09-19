@@ -1,16 +1,20 @@
 here are some things i've worked on!
 
+<img src="content/img/hgcn.png" class="thumb">
+
+[**HGCN efficiency:**](https://github.com/pyg-team/pytorch_geometric/pull/5453) i adapted [Hyperbolic GCN](https://arxiv.org/abs/1910.12933) to PyTorch Geometric, significantly reducing its training time by using vectorized manifold projections. i hope to continue work here, and one day make HGCN an official feature of PyTorch Geometric so more people can take advantage of its increased expressiveness over hierarchical graphs (e.g. tree structures!)
+
 <img src="content/img/kgene.png" class="thumb">
 
 [**kgene:**](https://github.com/julian-q/kgene) a BERT-powered knowledge graph generator. enter a URL of your choice, and this tool will scrape the site and [extracted named entities](https://en.wikipedia.org/wiki/Named-entity_recognition) from the text on each page. it shows you how each page is related to each other via the entities in common between them, and you get to see some neat community structures! i'm curious about how tools like this can help us find hidden connections within our thoughts and information across the Web.
 
 <img src="content/img/GATE.png" class="thumb">
 
-[**gate:**](https://github.com/julian-q/fmri-analysis) an implementation of the [Graph Attention Transformer Encoder](https://arxiv.org/abs/2010.03009) in PyTorch Geometric, interpreted as a graph neural network. it's similar to the [Graph Attention Network](https://arxiv.org/abs/1710.10903) but with a different attention mechanism.
+[**GATE:**](https://github.com/julian-q/fmri-analysis) an implementation of the [Graph Attention Transformer Encoder](https://arxiv.org/abs/2010.03009) in PyTorch Geometric, interpreted as a graph neural network. it's similar to the [Graph Attention Network](https://arxiv.org/abs/1710.10903) but with a different attention mechanism.
 
 <img src="content/img/bigchair.png" class="thumb">
 
-[**bigchair:**](/pdf/bigchair.pdf) [CLIP](https://openai.com/blog/clip/), but 3D. a collaboration with my amazing friends Pino Cholsaipant and [Sidney Hough](https://www.shough.me). we used contrastive learning to retrieve colored 3D meshes from natural language descriptions!
+[**BIGCHAIR:**](/pdf/bigchair.pdf) [CLIP](https://openai.com/blog/clip/), but 3D. a collaboration with my amazing friends Pino Cholsaipant and [Sidney Hough](https://www.shough.me). we used contrastive learning to retrieve colored 3D meshes from natural language descriptions!
 
 <img src="content/img/pong.png" class="thumb">
 
