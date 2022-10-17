@@ -1,6 +1,6 @@
 <h1 id="array-based-trees">Array-Based Trees</h1>
 <p>This is a tree!</p>
-<p><img src="/shorts/array-based-trees/content/img/tree.svg" /></p>
+<p><img src="/shorts/array-based-trees/img/tree.svg" /></p>
 <p>A tree is a <a
 href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed
 acyclic graph</a> (DAG) where each node has a single parent (except the
@@ -54,7 +54,7 @@ different blocks.</li>
 <p>There's another, super-cool way to represent binary trees, though:
 using an array!</p>
 <p><img
-src="/shorts/array-based-trees/content/img/array-based-tree.svg" /></p>
+src="/shorts/array-based-trees/img/array-based-tree.svg" /></p>
 <p>To do so, we can index each node in <a
 href="https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search">level-order</a>.
 That just means we order the nodes from top-to-bottom, then
@@ -67,7 +67,7 @@ tree!</p>
 not: there's a simple formula. If we are node $i$, then our parent and
 child nodes are given by the following:</p>
 <p><img
-src="/shorts/array-based-trees/content/img/tree-formula.svg" /></p>
+src="/shorts/array-based-trees/img/tree-formula.svg" /></p>
 <p>Let's see where these formulas actually come from. To do so, we need
 to establish a way to talk about specific nodes in the tree. Let $n$ be
 the level of the tree a node resides in, and call $n = 0$ the index of
@@ -75,7 +75,7 @@ the very top level. Let $k$ be the left-to-right position of a node in a
 given level. Let's say $k = 0$ is the index of the leftmost node. We'll
 start by listing off where the first node in each level lands in the
 array.</p>
-<p><img src="/shorts/array-based-trees/content/img/array.svg" /></p>
+<p><img src="/shorts/array-based-trees/img/array.svg" /></p>
 <ul>
 <li>The $k = 0$ node in level $n = 0$ (the root node) is at index
 $0$</li>

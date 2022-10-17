@@ -2,7 +2,7 @@
 
 This is a tree!
 
-![](/shorts/array-based-trees/content/img/tree.svg)
+![](/shorts/array-based-trees/img/tree.svg)
 
 A tree is a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG) where each node has a single parent (except the root). What makes this one special, though, is that each of its nodes have at most two children -- a binary tree.
 
@@ -37,7 +37,7 @@ struct BinaryTree
 ## Array-Based Tree
 There's another, super-cool way to represent binary trees, though: using an array!
 
-![](/shorts/array-based-trees/content/img/array-based-tree.svg)
+![](/shorts/array-based-trees/img/array-based-tree.svg)
 
 To do so, we can index each node in [level-order](https://en.wikipedia.org/wiki/Tree_traversal#Breadth-first_search). That just means we order the nodes from top-to-bottom, then left-to-right. We end up with an array where the nodes in each level are stored contiguously, one level after another. Each element of the array just stores the key of the corresponding node.
 
@@ -45,11 +45,11 @@ It might look like a flat log, but it's still a beautiful, branching tree!
 
 How will we ever find our parents? Where did our children go? Fear not: there's a simple formula. If we are node $i$, then our parent and child nodes are given by the following:
 
-![](/shorts/array-based-trees/content/img/tree-formula.svg)
+![](/shorts/array-based-trees/img/tree-formula.svg)
 
 Let's see where these formulas actually come from. To do so, we need to establish a way to talk about specific nodes in the tree. Let $n$ be the level of the tree a node resides in, and call $n = 0$ the index of the very top level. Let $k$ be the left-to-right position of a node in a given level. Let's say $k = 0$ is the index of the leftmost node. We'll start by listing off where the first node in each level lands in the array.
 
-![](/shorts/array-based-trees/content/img/array.svg)
+![](/shorts/array-based-trees/img/array.svg)
 
 - The $k = 0$ node in level $n = 0$ (the root node) is at index $0$
 - The $k = 0$ node in level $n = 1$ is at index $1$
