@@ -1,4 +1,4 @@
-I'm scared about this interview. They're going to ask me what the hardest thing I've done is, and I feel like I haven't done that many hard things in life. I might just cancel it -- I'm not ready yet.
+<!-- I'm scared about this interview. They're going to ask me what the hardest thing I've done is, and I feel like I haven't done that many hard things in life. I might just cancel it -- I'm not ready yet.
 ```
 They're going to ask me what the hardest thing I've done is, and so I'm just going to be honest. I'm not where I want to be, but I have done something. I can tell them about that. It was an exciting project to me, it took a long time to get working, and I learned a lot.
-```
+``` -->
