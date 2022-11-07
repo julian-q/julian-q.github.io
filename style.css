@@ -158,7 +158,7 @@ code span.vs { color: #cc9393; } /* VerbatimString */
 code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 code {
     font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-    font-size: 1rem;
+    font-size: 80%;
     margin: 0;
 }
 pre {
