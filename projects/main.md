@@ -4,7 +4,7 @@ here are some things i've worked on!
 
 [**HGCN efficiency:**](https://github.com/pyg-team/pytorch_geometric/pull/5453) an adaptation of [Hyperbolic GCN](https://arxiv.org/abs/1910.12933) to PyTorch Geometric with significantly reduced training time thanks to vectorized manifold projections. i hope to continue work here, and one day make HGCN an official feature of PyTorch Geometric so more people can take advantage of its increased expressiveness over hierarchical graphs (e.g. tree structures)!
 
-<img src="img/kgene.png" class="thumb">
+<img src="img/kgene.png" height='150px'>
 
 [**kgene:**](https://github.com/julian-q/kgene) a BERT-powered knowledge graph generator. enter a URL of your choice, and this tool will scrape the site and [extracts named entities](https://en.wikipedia.org/wiki/Named-entity_recognition) from the text on each page. it shows you how each page is related to each other via the entities in common between them, and you get to see some neat community structures! i'm curious about how tools like this can help us find hidden connections within our thoughts and information across the Web.
 
