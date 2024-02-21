@@ -1,0 +1,14 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111111;
+        color: white;
+    }
+}
+body {
+    max-width: 40rem;
+    font-size: larger;
+}
+.katex {
+    font-size: large;
+}
+
