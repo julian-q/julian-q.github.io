@@ -1,36 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>julian</title>
-	<link rel="icon" href="/img/graph.png">
-	<link rel="stylesheet" href="/styles.css">
+    <title>julian</title>
+    <link rel="icon" href="/img/graph.png">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <script>
-	window.onload = function() {
-		let i = parseInt(localStorage.getItem('photoId'));
-		if (isNaN(i)) {
-			i = 20;
-		}
-		document.getElementById("get-full-size").href = "/bouncy_bois/" + i + ".JPG";
-		document.getElementById("random-photo").src = "/bouncy_bois/" + i + "_small.jpg";
-		i -= 1;
-		if (i < 0) {
-			i = 21;
-		}
-		localStorage.setItem('photoId', i.toString());
-	}
+    window.onload = function() {
+        let i = parseInt(localStorage.getItem('photoId'));
+        if (isNaN(i)) {
+            i = 21;
+        }
+        document.getElementById("get-full-size").href = "/bouncy_bois/" + i + ".JPG";
+        document.getElementById("random-photo").src = "/bouncy_bois/" + i + "_small.jpg";
+        i -= 1;
+        if (i < 0) {
+            i = 21;
+        }
+        localStorage.setItem('photoId', i.toString());
+    }
 </script>
 <body>
-	<div style="float: right; text-align: right; line-height: 0px; position: relative; bottom: 0px;">
-		<img src="/img/graph.png" width="64px">
-		<p>
-			<a href="/bouncy_bois">bouncy bois</a>
-			<a href="/sketches">sketches</a>
-			<a href="https://github.com/julian-q">github</a>
-			<a href="https://twitter.com/julianhquevedo">twitter</a>
-		</p>
-	</div>
-	<a href="/" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
-	<a id="get-full-size"><img id="random-photo" class="outlined full-width"></a>
+    <div style="float: right; text-align: right; line-height: 0px; position: relative; bottom: 0px;">
+        <img src="/img/graph.png" width="64px">
+        <p>
+            <a href="/bouncy_bois">bouncy bois</a>
+            <a href="/sketches">sketches</a>
+            <a href="https://github.com/julian-q">github</a>
+            <a href="https://twitter.com/julianhquevedo">twitter</a>
+        </p>
+    </div>
+    <a href="/" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
+    <a id="get-full-size"><img id="random-photo" class="outlined full-width"></a>
 </body>
 </html>
