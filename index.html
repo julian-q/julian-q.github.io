@@ -9,7 +9,7 @@
     window.onload = function() {
         let i = parseInt(localStorage.getItem('photoId'));
         if (isNaN(i)) {
-            i = 21;
+            i = 0;
         }
         document.getElementById("get-full-size").href = "/photo/" + i + ".JPG";
         document.getElementById("random-photo").src = "/photo/" + i + "_small.jpg";
