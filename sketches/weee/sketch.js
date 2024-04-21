@@ -210,12 +210,13 @@ function draw() {
     background(0);
     rotateX(PI / 2);
     rotateZ(PI);
-    if (mouseIsPressed) {
-        var dx = mouseX - pmouseX;
-        var dy = mouseY - pmouseY;
-        rz += dx / 100;
-        rx += -dy / 100;
-    }
+    // this is annoying on mobile :(
+    // if (mouseIsPressed) {
+    //     var dx = mouseX - pmouseX;
+    //     var dy = mouseY - pmouseY;
+    //     rz += dx / 100;
+    //     rx += -dy / 100;
+    // }
     rotateZ(rz);
     rotateX(rx);
     if (keyIsPressed) {
