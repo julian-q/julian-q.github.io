@@ -16,7 +16,7 @@ function setup() {
     }
   }
 
-  createLoop({duration: 11, gif: {download: true, options:{quality: 10}}, framesPerSecond: 60});
+  // createLoop({duration: 11, gif: {download: true, options:{quality: 10}}, framesPerSecond: 60});
 }
 
 function draw() {

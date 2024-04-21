@@ -6,7 +6,7 @@ function setup() {
     canvas.parent("p5");
     frameRate(FPS);
     colorMode(HSB, 360, 100, 100, 100);
-    createLoop({duration: 8, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
+    // createLoop({duration: 8, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
 }
 
 let meshMode = Array.from({length: 800}, (v, i) => false);
