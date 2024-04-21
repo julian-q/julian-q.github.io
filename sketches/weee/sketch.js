@@ -202,7 +202,7 @@ function setup() {
     start.style('color', 'black');
     start.mouseClicked(loadParams);
     
-    createLoop({duration: 8, gif: {download: true, open: true, options:{quality: 1000, workers: 16}}, framesPerSecond: 30});
+    // createLoop({duration: 8, gif: {download: true, open: true, options:{quality: 1000, workers: 16}}, framesPerSecond: 30});
 }
 
 
