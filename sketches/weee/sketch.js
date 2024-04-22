@@ -201,6 +201,9 @@ function setup() {
     start.size(40, 22);
     start.style('color', 'black');
     start.mouseClicked(loadParams);
+
+    var pHint = createP('hint: arrow keys');
+    pHint.position(400, 0);
     
     // createLoop({duration: 8, gif: {download: true, open: true, options:{quality: 1000, workers: 16}}, framesPerSecond: 30});
 }
