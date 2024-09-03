@@ -1,6 +1,9 @@
+@font-face {
+    font-family: "FixederSys 2x";
+    src: url("FixederSys2x.ttf") format('truetype');
+}
 body {
     font-family: "FixederSys 2x";
-    src: url("http://tom7.org/fixedersys/FixederSys2x.ttf") format('truetype');
     font-smooth: never;
     -webkit-font-smoothing : none;
     margin: 0;
