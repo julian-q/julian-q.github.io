@@ -33,12 +33,12 @@ body {
     margin: 0;
     text-align: end;
     color: #FFFFFF;
-    background-color: #77ff77;
+    background-color: #33dd33;
     outline: solid;
     outline-color: #000000;
 }
 #menu li:hover {
-    background-color: #44aa44;
+    background-color: #11aa11;
 }
 .menu_bar a {
     color: inherit;
