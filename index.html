@@ -1,36 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-    <title>julian</title>
-    <link rel="icon" href="/img/graph.png">
-    <link rel="stylesheet" href="/styles.css">
-</head>
+<title>Julian Quevedo's Homepage</title>
+<meta name=description content="📬 julian's stuff">
+<link rel="stylesheet" href="/julian.css">
+<link rel="shortcut icon" href="/img/julian.ico">
 <script>
-    window.onload = function() {
-        let i = parseInt(localStorage.getItem('photoId'));
-        if (isNaN(i)) {
-            i = 0;
-        }
-        document.getElementById("get-full-size").href = "/photo/" + i + ".JPG";
-        document.getElementById("random-photo").src = "/photo/" + i + "_small.jpg";
-        i -= 1;
-        if (i < 0) {
-            i = 21;
-        }
-        localStorage.setItem('photoId', i.toString());
-    }
+    const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=37.4419&longitude=-122.143&current=temperature_2m&timezone=America%2FLos_Angeles&forecast_days=1";
+
+    fetch(weatherUrl)
+    .then(response => response.json())
+    .then(data => {
+        const temp = data.current.temperature_2m;
+        const unit = data.current_units.temperature_2m;
+        document.getElementById("temp").innerHTML = `${temp}${unit}`;
+    })
+    .catch(error => console.log(error));
 </script>
+</head>
 <body>
-    <div style="float: right; text-align: right; line-height: 0px; position: relative; bottom: 0px;">
-        <img src="/img/graph.png" width="64px">
-        <p>
-            <a href="/photo">photo</a>
-            <a href="/sketches">sketches</a>
-            <a href="https://github.com/julian-q">github</a>
-            <a href="https://twitter.com/julianhquevedo">twitter</a>
-        </p>
+    <div class="flex_container">
+        <div class="menu_bar">
+            <a href="/" id="me"><img src="/img/julian.jpg" style="height: 100px;"></a>
+        </div> 
+        <div class="center_bar" id="topbar">
+            <div class="title">julianq@stanford.edu</div>
+            <div><b>Julian Quevedo</b> 🌎 <span id="temp"></span> </div>
+        </div> 
+        <div class="menu_bar" id="topright"></div> 
     </div>
-    <a href="/" style="text-decoration: none;"><h1 class="outlined">julian's page</h1></a>
-    <a id="get-full-size"><img id="random-photo" class="outlined full-width"></a>
+    <div class="flex_container">
+        <div class="menu_bar" id="menu">
+            <div style="display: flex; flex-direction: row; gap: 5px;">
+            <a href="/" id="tinyme"><img src="/img/julian.jpg" style="height: 16px;"></a>
+            <ul>
+                <a href="/about/"><li>about</li></a>
+                <a href="/sketches/"><li>sketches</li></a>
+                <a href="/photos/"><li>photos</li></a>
+            </ul>
+            </div>
+        </div> 
+        <div class="center_bar" id="main">
+            <h3 style="margin-top: 0;">Hello:)</h3>
+        </div> 
+        <div class="menu_bar" id="rightspace"></div> 
+    </div>
 </body>
 </html>

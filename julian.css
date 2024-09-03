@@ -1,0 +1,90 @@
+body {
+    font-family: "FixederSys 2x";
+    src: url("FixederSys2x.ttf");
+    font-smooth: never;
+    -webkit-font-smoothing : none;
+    margin: 0;
+    background-color: #EEEEEE;
+    color: #222222;
+}
+.title {
+    font-size: 50px;
+    font-family: "Trebuchet MS";
+}
+.flex_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 5px;
+}
+.center_bar {
+    width: 500px;
+}
+.menu_bar {
+    width: 100px;
+    font-size: 16px;
+}
+#menu ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: end;
+    color: #FFFFFF;
+    background-color: #77ff77;
+    outline: solid;
+    outline-color: #000000;
+}
+#menu li:hover {
+    background-color: #44aa44;
+}
+.menu_bar a {
+    color: inherit;
+    text-decoration: inherit;
+}
+#me img {
+    vertical-align: bottom;
+}
+#tinyme img {
+    vertical-align: bottom;
+}
+#me img {
+    outline: solid;
+    outline-color: #000000;
+}
+#tinyme img {
+    outline: solid;
+    outline-color: #000000;
+}
+@media (max-width: 700px) {
+.flex_container {
+    flex-direction: column;
+    align-items: center;
+}
+.menu_bar {
+    width: 500px;
+}
+.menu_bar ul {
+    display: inline-block;    
+    text-align: start;
+}
+.menu_bar li {
+    display: inline-block;    
+}
+#me {
+    display: none;
+}
+}
+@media (min-width: 701px) {
+#tinyme {
+    display: none;
+}
+}
+@media (prefers-color-scheme: dark) {
+body {
+    background-color: #222222;
+    color: #EEEEEE;
+}
+}
