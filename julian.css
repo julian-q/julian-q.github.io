@@ -54,14 +54,7 @@ body {
 #me img {
     vertical-align: bottom;
 }
-#tinyme img {
-    vertical-align: bottom;
-}
 #me img {
-    outline: solid;
-    outline-color: #000000;
-}
-#tinyme img {
     outline: solid;
     outline-color: #000000;
 }
@@ -81,11 +74,6 @@ body {
     display: inline-block;    
 }
 #me {
-    display: none;
-}
-}
-@media (min-width: 621px) {
-#tinyme {
     display: none;
 }
 }
