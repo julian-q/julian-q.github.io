@@ -26,10 +26,12 @@ body {
 }
 .center_bar {
     width: 400px;
+    max-width: 100%;
 }
 .menu_bar {
     width: 100px;
     font-size: 16px;
+    max-width: 100%;
 }
 #menu ul {
     font-weight: bold;
