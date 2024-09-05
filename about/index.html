@@ -6,6 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/julian.css">
 <link rel="shortcut icon" href="/img/julian.ico">
+<style>
+td {
+    vertical-align: baseline;
+}
+td:first-child {
+  font-weight: bold
+}
+</style>
+<script>
+function calculateUptime() {
+    const uptime = new Date() - new Date("2002-05-10T16:59:07-07:00");
+    const hours = uptime / (1000 * 60 * 60);
+    document.getElementById("uptime").innerHTML = `${hours.toFixed(3)} hrs`;
+}
+setInterval(calculateUptime, 60 * 60);
+</script>
 </head>
 <body>
     <div class="flex_container">
@@ -25,9 +41,26 @@
                 <a href="/photos/"><li>photos</li></a>
             </ul>
         </div> 
-        <div class="center_bar" id="main">
-            <h3 style="margin-top: 0;">Hello:)</h3>
-        </div> 
+<div class="center_bar" id="main">
+<h3 style="margin-top: 0px;">Basic Information</h3>
+<table>
+    <tr><td>Name</td><td>Julian Hector Quevedo</td></tr>
+    <tr><td>Instance Id</td><td>1808390803344935585</td></tr>
+    <tr><td>Description</td><td>None</td></tr>
+    <tr><td>Type</td><td>Animal</td></tr>
+    <tr><td>Status</td><td style="background-color: #33dd33;">Running</td></tr>
+    <tr><td>Uptime</td><td><span id="uptime"></span></td></tr>
+    <tr><td>Zone</td><td>us-west1-a</td></tr>
+    <tr><td>Labels</td><td style="background-color: #AAAAAA;">{is_dog:false}</td></tr>
+</table>
+<h3>Machine configuration</h3>
+<table>
+    <tr><td>Machine type</td><td>Homo sapien</td></tr>
+    <tr><td>CPU platform</td><td>Cerebrum 6 1e-4 MHz</td></tr>
+    <tr><td>Display device</td><td>2x Retinal ganglion cell array</td></tr>
+    <tr><td>GPUs</td><td>1x Ventral visual stream</td></tr>
+</table>
+</div> 
         <div class="menu_bar" id="rightspace"></div> 
     </div>
 </body>
