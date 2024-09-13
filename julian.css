@@ -10,6 +10,12 @@ body {
     background-color: #EEEEEE;
     color: #222222;
 }
+a {
+    color: #8888FF;
+}
+a:visited {
+    color: #5555FF;
+}
 .title a {
     color: inherit;
     text-decoration: inherit;
