@@ -3,6 +3,7 @@
     src: url("FixederSys2x.ttf") format('truetype');
 }
 body {
+    font-size: 16px;
     font-family: "FixederSys 2x";
     font-smooth: never;
     -webkit-font-smoothing : none;
@@ -36,7 +37,6 @@ a:visited {
 }
 .menu_bar {
     width: 100px;
-    font-size: 16px;
     max-width: 100%;
 }
 #menu ul {
