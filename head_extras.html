@@ -1,0 +1,12 @@
+<script>
+    const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=37.4419&longitude=-122.143&current=temperature_2m&timezone=America%2FLos_Angeles&forecast_days=1";
+
+    fetch(weatherUrl)
+    .then(response => response.json())
+    .then(data => {
+        const temp = data.current.temperature_2m;
+        const unit = data.current_units.temperature_2m;
+        document.getElementById("temp").innerHTML = `${temp}${unit}`;
+    })
+    .catch(error => console.log(error));
+</script>

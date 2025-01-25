@@ -1,0 +1,16 @@
+<style>
+td {
+    vertical-align: baseline;
+}
+td:first-child {
+  font-weight: bold
+}
+</style>
+<script>
+function calculateUptime() {
+    const uptime = new Date() - new Date("2002-05-10T16:59:07-07:00");
+    const hours = uptime / (1000 * 60 * 60);
+    document.getElementById("uptime").innerHTML = `${hours.toFixed(3)} hrs`;
+}
+setInterval(calculateUptime, 60 * 60);
+</script>
