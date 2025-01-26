@@ -34,6 +34,7 @@ for body_path in body_paths:
         body_path.parent / "index.html",
         template.render(
             body=readfile(body_path), 
-            head_extras=readfile(body_path.parent / "head_extras.html")
+            head_extras=readfile(body_path.parent / "head_extras.html"),
+            title=body_path.parent.name,
         )
     )

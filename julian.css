@@ -2,14 +2,23 @@
     font-family: "FixederSys 2x";
     src: url("FixederSys2x.ttf") format('truetype');
 }
+@font-face {
+    font-family: "Spectral-Regular";
+    src: url("Spectral-Regular.ttf") format('truetype');
+}
 body {
     font-size: 16px;
-    font-family: "FixederSys 2x";
+    font-family: "Trebuchet MS";
     font-smooth: never;
     -webkit-font-smoothing : none;
     margin: 0;
     background-color: #EEEEEE;
     color: #222222;
+}
+#main {
+    font-family: "Trebuchet MS";
+    font-smooth: auto;
+    -webkit-font-smoothing : auto;
 }
 a {
     color: #8888FF;
@@ -28,7 +37,7 @@ a:visited {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 5px;
+    gap: 15px;
     margin: 5px;
 }
 .center_bar {
@@ -50,6 +59,7 @@ a:visited {
     background-color: #33dd33;
     outline: solid;
     outline-color: #000000;
+    outline-width: 1px;
 }
 #menu li:hover {
     color: #FFFFFF;
@@ -62,9 +72,29 @@ a:visited {
 #me img {
     vertical-align: bottom;
 }
-#me img {
+.fullwidthbox {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
     outline: solid;
     outline-color: #000000;
+    outline-width: 1px;
+}
+.thumbnail {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    position: relative;
+    outline: solid;
+    outline-color: #000000;
+    outline-width: 1px;
+}
+.thumbnail img {
+    width: 105%;
+    min-height: 105%;
+    object-fit: cover;
+    object-position: center;
 }
 @media (max-width: 620px) {
 .flex_container {
@@ -88,6 +118,6 @@ a:visited {
 @media (prefers-color-scheme: dark) {
 body {
     background-color: #222222;
-    color: #EEEEEE;
+    color: #FFFFEE;
 }
 }
