@@ -171,34 +171,43 @@ function setup() {
     frameRate(60);
     textFont("Trebuchet MS");
     var p1 = createP('η');
+    p1.parent("p5");
     p1.style('color', 'white');
     p1.position(30, -5);
     etaInput = createInput(paths[0].a.toString());
+    etaInput.parent("p5");
     etaInput.position(60, 10);
     etaInput.size(40, 20);
     etaInput.style('color', 'black');
     var p2 = createP('β1');
+    p2.parent("p5");
     p2.style('color', 'white');
     p2.position(120, -5);
     beta1Input = createInput(paths[0].b1.toString());
+    beta1Input.parent("p5");
     beta1Input.position(150, 10);
     beta1Input.size(40, 20);
     beta1Input.style('color', 'black');
     var p3 = createP('β2');
+    p3.parent("p5");
     p3.style('color', 'white');
     p3.position(210, -5);
     beta2Input = createInput(paths[0].b2.toString());
+    beta2Input.parent("p5");
     beta2Input.position(240, 10);
     beta2Input.size(40, 20);
     beta2Input.style('color', 'black');
     start = createButton('start');
+    start.parent("p5");
     start.position(310, 12);
     start.size(40, 22);
     start.style('color', 'black');
     start.mouseClicked(loadParams);
 
     var pHint = createP('hint: arrow keys');
-    pHint.position(400, 0);
+    pHint.parent("p5");
+    pHint.style('color', 'white');
+    pHint.position(30, 30);
     
     // createLoop({duration: 8, gif: {download: true, open: true, options:{quality: 1000, workers: 16}}, framesPerSecond: 30});
 }

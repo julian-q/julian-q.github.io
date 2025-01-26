@@ -5,7 +5,7 @@ function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
     canvas.parent("p5");
     frameRate(FPS);
-    // createLoop({duration: 9, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
+    // createLoop({duration: 2, gif: {download: true, options:{quality: 20}}, framesPerSecond: 60});
 }
 
 let gridX = -200;
