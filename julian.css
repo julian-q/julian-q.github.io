@@ -96,10 +96,11 @@ a:visited {
     object-fit: cover;
     object-position: center;
 }
-@media (max-width: 620px) {
+@media (max-width: 650px) {
 .flex_container {
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 .menu_bar {
     width: 400px;
