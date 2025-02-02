@@ -35,6 +35,6 @@ for body_path in body_paths:
         template.render(
             body=readfile(body_path), 
             head_extras=readfile(body_path.parent / "head_extras.html"),
-            title=body_path.parent.name,
+            title=body_path.parent.name.replace("-", " "),
         )
     )

@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
 <head>
-<title>sketches</title>
+<title>fractal flood fill</title>
 <meta name=description content="📬 julian's stuff">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/julian.css">
 <link rel="icon" href="/img/julian.ico">
-
+<script src="/sketches/p5.min.js"></script>
+<script src="sketch.js"></script>
 </head>
 <body>
     <div class="flex_container">
@@ -14,7 +15,7 @@
             <a href="/" id="me"><img src="/img/graphy.png" style="height: 100px;"></a>
         </div> 
         <div class="center_bar" id="titlebar">
-            <div class="title"><a href="/">sketches</a></div>
+            <div class="title"><a href="/">fractal flood fill</a></div>
         </div> 
         <div class="menu_bar" id="topright"></div> 
     </div>
@@ -27,15 +28,10 @@
             </ul>
         </div> 
         <div class="center_bar" id="main">
-<div style="display: flex; flex-direction: row; gap: 5px; flex-wrap: wrap;">
-    <div class="thumbnail"><a href="human2"><img src="human2.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="human1"><img src="human1.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="cubes"><img src="cubes.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="tree"><img src="tree.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="blobs"><img src="blobs.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="weee"><img src="weee.gif" loading="lazy"></a></div>
-    <div class="thumbnail"><a href="fractal-flood-fill"><img src="fractal.png" loading="lazy"></a></div>
-</div>
+
+<div id="p5" class="fullwidthbox"></div>
+<div id="slider"></div>
+<p>Click anywhere to fill! Use the slider to change the number of iterations.</p>
         </div> 
         <div class="menu_bar" id="rightspace"></div> 
     </div>
