@@ -14,7 +14,7 @@ let alpha0;
 let dpi;
 let queue;
 let iter;
-let cubesize;
+let bsz;
 let slider;
 
 function setup() {
@@ -35,7 +35,7 @@ function setup() {
     dpi = pixelDensity();
     queue = [[floor(width/2 / d)*d, floor(height/2 / d)*d]];
     iter = 0;
-    cubesize = 2;
+    bsz = 2;
     // Derive initial string to render.
     derive();
 }
@@ -50,11 +50,11 @@ function draw() {
             if (isClear(xF, yF)) {
                 fill(0, 0, 255);
                 noStroke();
-                rect(xF, yF, cubesize, cubesize);
-                pushIfClear(queue, xF, yF-cubesize);
-                pushIfClear(queue, xF, yF+cubesize);
-                pushIfClear(queue, xF-cubesize, yF);
-                pushIfClear(queue, xF+cubesize, yF);
+                rect(xF, yF, bsz, bsz);
+                pushIfClear(queue, xF, yF-bsz);
+                pushIfClear(queue, xF, yF+bsz);
+                pushIfClear(queue, xF-bsz, yF);
+                pushIfClear(queue, xF+bsz, yF);
             }
         }
     }
@@ -80,7 +80,7 @@ function mousePressed() {
         return;
     if (mouseY < 0 || mouseY >= width)
         return;
-    queue = [[floor(mouseX / cubesize)*cubesize+1, floor(mouseY / cubesize)*cubesize+1]];
+    queue = [[floor(mouseX / bsz)*bsz+1, floor(mouseY / bsz)*bsz+1]];
     derive();
 }
 
@@ -107,8 +107,9 @@ function derive() {
     // Render turtle path.
     background(0);
     stroke(255);
-    strokeWeight(2);
+    strokeWeight(bsz*2);
     strokeCap(PROJECT);
+    fill(0, 0, 255);
     let x = x0;
     let y = y0;
     let alpha = alpha0;
