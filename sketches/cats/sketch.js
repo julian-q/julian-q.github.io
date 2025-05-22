@@ -88,7 +88,7 @@ function menuScreen() {
     for (let [name, imgList] of Object.entries(catImages)) {
         let catImg = imgList[0];
         let catImgScale = 0.7;
-        let catX = name == "big" ? width * 0.30 : width * 0.71;
+        let catX = name == "big" ? width * 0.27 : width * 0.71;
         let catY = name == "big" ? height * 0.525 : height * 0.50;
         let clickX = mouseX > (catX - catImg.width/2) && mouseX < (catX + catImg.width/2);
         let clickY = mouseY > (catY - catImg.height/2) && mouseY < (catY + catImg.height/2);
@@ -103,7 +103,11 @@ function menuScreen() {
             return;
         }
         imageMode(CENTER);
-        image(catImg, catX, catY, catImg.width * catImgScale, catImg.height * catImgScale);
+        push();
+        translate(catX, catY);
+        scale(name == "big" ? -1 : 1, 1);
+        image(catImg, 0, 0, catImg.width * catImgScale, catImg.height * catImgScale);
+        pop();
     }
 
     // Draw text.
