@@ -114,8 +114,8 @@ function draw() {
     textFont(font);
     textSize(48);
     textStyle(BOLD);
-    text("朱", -120, -50);
-    text("华", +70, -50);
+    // text("朱", -120, -50);
+    // text("华", +70, -50);
     pop();
     push();
     noStroke();
