@@ -14,6 +14,7 @@ class Cube {
   }
 
   show() {
+    colorMode(HSB, 360, 100, 100)
     noStroke(); // - get rid of wireframe
 
     push();     // - draw a 3-sided cube with 3 planes
@@ -22,21 +23,21 @@ class Cube {
 
       push();
         translate(0, 0, this.size/2);
-        specularMaterial(color((this.hue) % 360, 70, 100));
+        ambientMaterial(color((this.hue) % 360, 70, 100));
         plane(this.size);
       pop();
 
       push();
         translate(0, -this.size/2, 0);
         rotateX(HALF_PI);
-        specularMaterial(color((this.hue + 45) % 360, 70, 100));
+        ambientMaterial(color((this.hue + 45) % 360, 70, 100));
         plane(this.size);
       pop();
 
       push();
         translate(this.size/2, 0, 0);
         rotateY(HALF_PI);
-        specularMaterial(color((this.hue + 90) % 360, 70, 100));
+        ambientMaterial(color((this.hue + 90) % 360, 70, 100));
         plane(this.size);
       pop();
     pop();
