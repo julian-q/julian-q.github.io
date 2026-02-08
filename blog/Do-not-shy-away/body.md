@@ -1,4 +1,4 @@
-<p style="margin-top: 0">This is a rallying cry. Do not shy away from the hard problems in deep learning.<p>
+<p style="margin-top: 0">Do not shy away from the hard problems in deep learning.<p>
 
 We have made tremendous progress as a society on modeling the sequence of language. By scaling next-token prediction, we have achieved highly useful language-based assistants. Now, there lies a new, even more exciting frontier in AI: modeling the sequence of the world. At each moment in time, humans move through a rich, multimodal sequence of sensory stimuli and motor control. Taking inspiration from the success of next-token prediction, what if we could train next-_moment_ prediction models which learn to generate streams of continuous visuomotor data?
 
@@ -17,8 +17,6 @@ Well, now we all know how that turned out. Today, language models are transformi
 I want to hear less "let's compromise on a more practical [totally unimpressive] approach" and more "let's build Dyson spheres." To build today's language models, we had to take a leap of faith. Let us take a leap of faith again and solve the hard problem of world modeling head-on. Let's solve the engineering and energy problems along the way. If it requires fundamental advances in hardware, so be it. The energy is out there – the Sun gives it to us for free. Let's cover Nevada in solar panels, or send them into space, or build a literal Dyson sphere. We can do this. As a civilization, we must continue to consume more energy in order to advance.
 
 Feel it in the air. We are on the cusp of an incredible technology. It is waiting for you to invent it.
-
-Do not shy away from the hard problems in deep learning.
 
 
 <span style="color: gray;">_If this resonates, feel free to <a href="/contact">drop me a line</a>._</span>
