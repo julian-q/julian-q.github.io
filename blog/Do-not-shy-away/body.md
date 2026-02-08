@@ -12,7 +12,7 @@ Yes, if successful, the training and inference of such a model would require mor
 
 I say we do it anyway. Believe it or not, people said [similar things](https://news.ycombinator.com/item?id=23895481) about language models when GPT-3 came out. That large language models would be far too computationally expensive and cost far too much energy to be practical. That GPT models would never power NPCs in video games because they could never be run locally or be served fast enough. That they don't _understand language_, could not generate multiple pages of coherent text, that they are merely [stochastic parrots](https://dl.acm.org/doi/10.1145/3442188.3445922) and cannot do useful knowledge work.
 
-Well, now we all know how that turned out. Today, language models are transforming the nature of software engineering, literally churning out entire C compilers, and approaching the creation of serious economic value.
+Well, now we all know how that turned out. Today, language models are transforming the nature of software engineering, and approaching the creation of serious economic value.
 
 I want to hear less "let's compromise on a more practical [totally unimpressive] approach" and more "let's build Dyson spheres." To build today's language models, we had to take a leap of faith. Let us take a leap of faith again and solve the hard problem of world modeling head-on. Let's solve the engineering and energy problems along the way. If it requires fundamental advances in hardware, so be it. The energy is out there – the Sun gives it to us for free. Let's cover Nevada in solar panels, or send them into space, or build a literal Dyson sphere. We can do this. As a civilization, we must continue to consume more energy in order to advance.
 
