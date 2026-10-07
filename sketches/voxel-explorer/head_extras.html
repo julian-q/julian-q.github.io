@@ -1,0 +1,60 @@
+<style>
+#p5 canvas {
+    display: block;
+    height: 100% !important;
+    inset: 0;
+    position: absolute;
+    width: 100% !important;
+    z-index: 1;
+}
+#voxel-hud {
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+}
+#voxel-crosshair {
+    height: 18px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+}
+#voxel-crosshair::before,
+#voxel-crosshair::after {
+    background: rgba(255, 255, 255, 0.75);
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#voxel-crosshair::before {
+    height: 1px;
+    width: 18px;
+}
+#voxel-crosshair::after {
+    height: 18px;
+    width: 1px;
+}
+#voxel-shards {
+    display: flex;
+    gap: 5px;
+    left: 14px;
+    position: absolute;
+    top: 14px;
+}
+#voxel-shards span {
+    background: rgba(31, 53, 69, 0.8);
+    display: block;
+    height: 8px;
+    width: 8px;
+}
+#voxel-shards span.found {
+    background: #3de8cc;
+    box-shadow: 0 0 8px rgba(61, 232, 204, 0.7);
+}
+</style>
+<script src="/sketches/p5.min.js"></script>
+<script src="sketch.js"></script>

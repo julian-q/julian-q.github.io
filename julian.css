@@ -84,7 +84,7 @@ a:visited {
     outline-color: #000000;
     outline-width: 1px;
 }
-.thumbnail img {
+.thumbnail img, .thumbnail video {
     width: 105%;
     min-height: 105%;
     object-fit: cover;
